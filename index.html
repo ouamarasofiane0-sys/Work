@@ -3,32 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mon Studio — Short Videos Virales</title>
-  <meta name="description" content="YouTube, TikTok et Instagram — retrouvez toutes mes short videos virales au même endroit." />
+  <title>1 Minute d'Histoire — L'histoire des pays en 60 secondes</title>
+  <meta name="description" content="L'histoire des pays racontée de façon ludique en 1 minute. Retrouvez mes shorts sur YouTube, TikTok et Instagram." />
   <style>
     :root {
-      --bg: #0b0b12;
-      --bg-soft: #14141f;
-      --card: #1b1b28;
-      --text: #f5f5fa;
-      --muted: #a0a0b8;
-      --accent: #ff2d55;
-      --accent-2: #7c3aed;
-      --ring: rgba(124, 58, 237, 0.35);
+      --bg: #14100a;
+      --bg-soft: #1e1810;
+      --card: #241d12;
+      --text: #f7f1e3;
+      --muted: #b9a888;
+      --accent: #d4a24e;      /* or / parchemin */
+      --accent-2: #8c4a2f;    /* terre / sépia */
+      --ring: rgba(212, 162, 78, 0.4);
       --yt: #ff0033;
       --tiktok: #25f4ee;
       --ig: #e1306c;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,0.25), transparent 60%),
-        radial-gradient(1000px 500px at 110% 10%, rgba(255,45,85,0.18), transparent 55%),
+        radial-gradient(1200px 600px at 10% -10%, rgba(212,162,78,0.18), transparent 60%),
+        radial-gradient(1000px 500px at 110% 10%, rgba(140,74,47,0.22), transparent 55%),
         var(--bg);
       color: var(--text);
       min-height: 100vh;
@@ -36,141 +35,100 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .wrap {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 48px 20px 80px;
-    }
+    .wrap { max-width: 680px; margin: 0 auto; padding: 48px 20px 80px; }
 
-    /* ---- Header / profil ---- */
+    /* ---- Profil ---- */
     .profile { text-align: center; margin-bottom: 36px; }
-
     .avatar {
-      width: 108px; height: 108px;
-      border-radius: 50%;
-      margin: 0 auto 18px;
-      display: grid; place-items: center;
-      font-size: 44px; font-weight: 800;
+      width: 108px; height: 108px; border-radius: 50%;
+      margin: 0 auto 18px; display: grid; place-items: center;
+      font-size: 46px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 12px 40px rgba(124,58,237,0.4);
+      box-shadow: 0 12px 40px rgba(140,74,47,0.45);
       border: 3px solid rgba(255,255,255,0.12);
     }
-
-    .name { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
-
-    .handle { color: var(--muted); font-size: 15px; margin-top: 4px; }
-
-    .bio {
-      margin: 16px auto 0;
-      max-width: 460px;
-      color: #d5d5e6;
-      font-size: 15px;
+    .name { font-size: 27px; font-weight: 800; letter-spacing: -0.02em; }
+    .tagline {
+      display: inline-block; margin-top: 8px; padding: 4px 12px;
+      font-size: 13px; font-weight: 600; color: var(--accent);
+      background: rgba(212,162,78,0.12); border: 1px solid var(--ring);
+      border-radius: 999px;
     }
+    .handle { color: var(--muted); font-size: 15px; margin-top: 12px; }
+    .bio { margin: 14px auto 0; max-width: 480px; color: #e6dcc6; font-size: 15px; }
 
-    /* ---- Stats ---- */
-    .stats {
-      display: flex; justify-content: center; gap: 28px;
-      margin: 24px 0 8px;
-    }
+    .stats { display: flex; justify-content: center; gap: 28px; margin: 24px 0 8px; }
     .stat b { display: block; font-size: 20px; font-weight: 800; }
     .stat span { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
-    /* ---- Boutons réseaux ---- */
+    /* ---- Liens réseaux ---- */
     .links { display: grid; gap: 14px; margin-top: 32px; }
-
     .link {
-      display: flex; align-items: center; gap: 16px;
-      padding: 16px 20px;
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
+      display: flex; align-items: center; gap: 16px; padding: 16px 20px;
+      background: var(--card); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; color: var(--text); text-decoration: none; font-weight: 600;
       transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
     }
-    .link:hover {
-      transform: translateY(-2px);
-      border-color: var(--ring);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    }
-    .link .ico {
-      width: 40px; height: 40px; flex: 0 0 40px;
-      border-radius: 12px; display: grid; place-items: center;
-    }
+    .link:hover { transform: translateY(-2px); border-color: var(--ring); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+    .link .ico { width: 40px; height: 40px; flex: 0 0 40px; border-radius: 12px; display: grid; place-items: center; }
     .link .ico svg { width: 22px; height: 22px; }
     .link .meta { flex: 1; }
     .link .meta small { display: block; color: var(--muted); font-weight: 500; font-size: 13px; }
     .link .arrow { color: var(--muted); }
-
     .ico.yt { background: rgba(255,0,51,0.15); color: var(--yt); }
     .ico.tiktok { background: rgba(37,244,238,0.12); color: var(--tiktok); }
     .ico.ig { background: rgba(225,48,108,0.15); color: var(--ig); }
 
-    /* ---- Section vidéos ---- */
+    /* ---- Sections ---- */
     .section-title {
-      margin: 48px 0 18px;
-      font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
-      color: var(--muted);
+      margin: 48px 0 18px; font-size: 13px; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--muted);
     }
 
-    .videos {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
+    .videos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .video {
-      position: relative;
-      aspect-ratio: 9 / 16;
-      border-radius: 14px;
-      overflow: hidden;
-      background: linear-gradient(160deg, var(--bg-soft), #23233a);
+      position: relative; aspect-ratio: 9 / 16; border-radius: 14px; overflow: hidden;
+      background: linear-gradient(160deg, var(--bg-soft), #2f2617);
       border: 1px solid rgba(255,255,255,0.06);
-      display: grid; place-items: center;
-      cursor: pointer;
-      transition: transform .15s ease;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 10px; cursor: pointer; transition: transform .15s ease;
     }
     .video:hover { transform: scale(1.03); }
-    .video .play {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(0,0,0,0.45);
-      display: grid; place-items: center;
-      backdrop-filter: blur(4px);
-    }
-    .video .play svg { width: 18px; height: 18px; fill: #fff; margin-left: 2px; }
+    .video .flag { font-size: 30px; }
+    .video .cap { font-size: 12px; font-weight: 700; line-height: 1.25; }
     .video .views {
-      position: absolute; bottom: 8px; left: 8px;
-      font-size: 12px; font-weight: 600;
-      background: rgba(0,0,0,0.5); padding: 3px 8px; border-radius: 8px;
+      align-self: flex-start; font-size: 11px; font-weight: 600;
+      background: rgba(0,0,0,0.45); padding: 3px 8px; border-radius: 8px;
     }
+
+    /* ---- Idées de contenu ---- */
+    .ideas { display: grid; gap: 10px; }
+    .idea {
+      display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+      background: var(--card); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; font-size: 14px;
+    }
+    .idea .em { font-size: 20px; }
 
     /* ---- CTA ---- */
     .cta {
-      margin-top: 40px; text-align: center;
-      background: linear-gradient(135deg, rgba(255,45,85,0.15), rgba(124,58,237,0.15));
-      border: 1px solid var(--ring);
-      border-radius: 18px; padding: 28px 22px;
+      margin-top: 44px; text-align: center;
+      background: linear-gradient(135deg, rgba(212,162,78,0.16), rgba(140,74,47,0.18));
+      border: 1px solid var(--ring); border-radius: 18px; padding: 28px 22px;
     }
     .cta h3 { font-size: 18px; margin-bottom: 6px; }
     .cta p { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
     .cta a {
       display: inline-block; padding: 12px 26px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fff; text-decoration: none; font-weight: 700;
-      border-radius: 12px;
+      color: #fff; text-decoration: none; font-weight: 700; border-radius: 12px;
       transition: opacity .15s ease;
     }
     .cta a:hover { opacity: 0.9; }
 
-    footer {
-      margin-top: 48px; text-align: center;
-      color: var(--muted); font-size: 13px;
-    }
+    footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: 13px; }
 
-    @media (max-width: 420px) {
-      .stats { gap: 18px; }
-      .videos { gap: 8px; }
-    }
+    @media (max-width: 420px) { .stats { gap: 18px; } .videos { gap: 8px; } }
   </style>
 </head>
 <body>
@@ -178,29 +136,30 @@
 
     <!-- ============ PROFIL ============ -->
     <section class="profile">
-      <div class="avatar">🎬</div>
-      <h1 class="name">Mon Studio</h1>
-      <p class="handle">@monstudio · Créateur de short videos</p>
+      <div class="avatar">🌍</div>
+      <h1 class="name">1 Minute d'Histoire</h1>
+      <div class="tagline">⏱️ L'histoire des pays en 60 secondes</div>
+      <p class="handle">@1minutehistoire · Chaîne éducative</p>
       <p class="bio">
-        Des shorts qui accrochent en 3 secondes ⚡ Astuces, tendances et contenu viral chaque semaine.
-        Rejoins-moi sur tes plateformes préférées 👇
+        Chaque pays a une histoire folle — je te la raconte en 1 minute, de façon simple et ludique 🎓
+        Cartes, dates clés et anecdotes surprenantes. Apprends en t'amusant 👇
       </p>
 
       <div class="stats">
-        <div class="stat"><b>124K</b><span>Abonnés</span></div>
-        <div class="stat"><b>18M</b><span>Vues</span></div>
-        <div class="stat"><b>340</b><span>Vidéos</span></div>
+        <div class="stat"><b>—</b><span>Abonnés</span></div>
+        <div class="stat"><b>—</b><span>Vues</span></div>
+        <div class="stat"><b>—</b><span>Pays</span></div>
       </div>
     </section>
 
     <!-- ============ LIENS RÉSEAUX ============ -->
     <section class="links">
-      <!-- Remplace le href="#" par le lien réel de ta chaîne / ton compte -->
+      <!-- Remplace href="#" par le lien réel de ta chaîne / ton compte -->
       <a class="link" href="#" target="_blank" rel="noopener">
         <span class="ico yt">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
         </span>
-        <span class="meta">YouTube<small>Shorts & vidéos longues</small></span>
+        <span class="meta">YouTube<small>Shorts « Histoire des pays »</small></span>
         <span class="arrow">›</span>
       </a>
 
@@ -208,7 +167,7 @@
         <span class="ico tiktok">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 5.8a4.8 4.8 0 0 1-3-1.1V15a5 5 0 1 1-5-5c.2 0 .4 0 .6.1v2.6a2.5 2.5 0 1 0 1.9 2.4V2h2.5a4.8 4.8 0 0 0 3 4.1V5.8z"/></svg>
         </span>
-        <span class="meta">TikTok<small>Le meilleur du viral</small></span>
+        <span class="meta">TikTok<small>Anecdotes historiques</small></span>
         <span class="arrow">›</span>
       </a>
 
@@ -216,31 +175,41 @@
         <span class="ico ig">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4a3.7 3.7 0 0 1-1.4-.9 3.7 3.7 0 0 1-.9-1.4c-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.8.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.5 8.5 2.5 8.9 2.5 12s0 3.5.1 4.8c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.3.1 1.7.1 4.8.1s3.5 0 4.8-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.3.1-1.7.1-4.8s0-3.5-.1-4.8c-.1-1.1-.2-1.7-.4-2.1a3.5 3.5 0 0 0-.8-1.3 3.5 3.5 0 0 0-1.3-.8c-.4-.2-1-.3-2.1-.4-1.3-.1-1.7-.1-4.8-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm6.2-8.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
         </span>
-        <span class="meta">Instagram<small>Reels & coulisses</small></span>
+        <span class="meta">Instagram<small>Reels & cartes animées</small></span>
         <span class="arrow">›</span>
       </a>
     </section>
 
-    <!-- ============ VIDÉOS EN VEDETTE ============ -->
-    <h2 class="section-title">🔥 Shorts populaires</h2>
+    <!-- ============ ÉPISODES ============ -->
+    <h2 class="section-title">📺 Derniers épisodes</h2>
     <div class="videos">
-      <div class="video"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="views">2.3M</span></div>
-      <div class="video"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="views">1.1M</span></div>
-      <div class="video"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="views">890K</span></div>
-      <div class="video"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="views">670K</span></div>
-      <div class="video"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="views">540K</span></div>
-      <div class="video"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="views">410K</span></div>
+      <div class="video"><span class="flag">🇫🇷</span><div><div class="cap">La France en 1 min</div><span class="views">bientôt</span></div></div>
+      <div class="video"><span class="flag">🇯🇵</span><div><div class="cap">Le Japon en 1 min</div><span class="views">bientôt</span></div></div>
+      <div class="video"><span class="flag">🇪🇬</span><div><div class="cap">L'Égypte en 1 min</div><span class="views">bientôt</span></div></div>
+      <div class="video"><span class="flag">🇧🇷</span><div><div class="cap">Le Brésil en 1 min</div><span class="views">bientôt</span></div></div>
+      <div class="video"><span class="flag">🇲🇦</span><div><div class="cap">Le Maroc en 1 min</div><span class="views">bientôt</span></div></div>
+      <div class="video"><span class="flag">🇮🇳</span><div><div class="cap">L'Inde en 1 min</div><span class="views">bientôt</span></div></div>
+    </div>
+
+    <!-- ============ IDÉES DE CONTENU ============ -->
+    <h2 class="section-title">💡 Idées de séries</h2>
+    <div class="ideas">
+      <div class="idea"><span class="em">🗺️</span><span><b>« Pourquoi ce pays existe ? »</b> — l'origine d'une nation en 60 s</span></div>
+      <div class="idea"><span class="em">⚔️</span><span><b>« La bataille qui a tout changé »</b> — un moment décisif de l'Histoire</span></div>
+      <div class="idea"><span class="em">👑</span><span><b>« Le dirigeant le plus fou »</b> — anecdotes surprenantes</span></div>
+      <div class="idea"><span class="em">🏳️</span><span><b>« L'histoire cachée du drapeau »</b> — les symboles expliqués</span></div>
+      <div class="idea"><span class="em">🤯</span><span><b>« Ce que personne ne t'a appris »</b> — le fait insolite du jour</span></div>
     </div>
 
     <!-- ============ CTA ============ -->
     <section class="cta">
-      <h3>📩 Une collab ou une question ?</h3>
-      <p>Écris-moi, je réponds à tous les messages !</p>
-      <a href="mailto:contact@monstudio.com">Me contacter</a>
+      <h3>📩 Une suggestion de pays ?</h3>
+      <p>Dis-moi quel pays tu veux voir dans le prochain épisode !</p>
+      <a href="mailto:contact@1minutehistoire.com">Proposer un pays</a>
     </section>
 
     <footer>
-      © <span id="year"></span> Mon Studio · Fait avec ❤️ pour les créateurs
+      © <span id="year"></span> 1 Minute d'Histoire · Apprendre en s'amusant 🎓
     </footer>
 
   </main>

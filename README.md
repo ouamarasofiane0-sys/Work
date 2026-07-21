@@ -1,37 +1,67 @@
-# 🎬 Mon Studio — Page « Link-in-bio » pour short videos virales
+# 🌍 1 Minute d'Histoire — Chaîne éducative de shorts
 
-Une page web unique, moderne et responsive qui rassemble vos comptes **YouTube**, **TikTok** et **Instagram** et met en avant vos short videos. Idéale à mettre dans votre bio Instagram/TikTok/YouTube pour rediriger votre audience.
+L'histoire des pays racontée de façon **ludique en 1 minute**, à publier sur **YouTube Shorts**, **TikTok** et **Instagram Reels**.
+
+Ce dépôt contient une page **« link-in-bio »** (`index.html`) qui rassemble vos réseaux et présente vos épisodes, plus ce guide de production.
 
 ## 🚀 Voir la page
 
-Ouvrez simplement le fichier `index.html` dans votre navigateur (double-clic), ou hébergez-le gratuitement (voir plus bas).
+Ouvrez `index.html` dans votre navigateur (double-clic), ou hébergez-la gratuitement avec **GitHub Pages** / **Netlify**.
 
-## ✏️ Personnaliser (aucune connaissance technique requise)
+## ✏️ Personnaliser la page
 
-Ouvrez `index.html` avec un éditeur de texte et modifiez :
+Ouvrez `index.html` dans un éditeur de texte et modifiez :
 
-| À changer | Où | Exemple |
-|-----------|-----|---------|
-| Nom du studio | `<h1 class="name">Mon Studio</h1>` | Votre nom / marque |
-| Pseudo & description | `class="handle"` et `class="bio"` | Votre @ et votre phrase d'accroche |
-| Emoji du profil | `<div class="avatar">🎬</div>` | N'importe quel emoji |
-| Statistiques | bloc `class="stats"` | Vos vrais chiffres |
-| Liens réseaux | `href="#"` dans chaque `<a class="link">` | L'URL réelle de vos comptes |
-| Email de contact | `href="mailto:contact@monstudio.com"` | Votre email |
-| Couleurs | variables `--accent`, `--accent-2` en haut du `<style>` | Vos couleurs de marque |
+| À changer | Où |
+|-----------|-----|
+| Nom de la chaîne | `<h1 class="name">1 Minute d'Histoire</h1>` |
+| Pseudo & bio | `class="handle"` et `class="bio"` |
+| Statistiques | bloc `class="stats"` (mettez vos vrais chiffres) |
+| Liens réseaux | `href="#"` dans chaque `<a class="link">` → vos URLs réelles |
+| Épisodes / pays | bloc `class="videos"` (emoji drapeau + titre) |
+| Email de contact | `href="mailto:..."` |
+| Couleurs | variables `--accent`, `--accent-2` en haut du `<style>` |
 
-> 💡 Remplacez chaque `href="#"` par le lien réel, par exemple `https://youtube.com/@votrechaine`.
+---
 
-## 🌐 Mettre en ligne gratuitement
+## 🎬 Recette d'un short « pays en 1 minute »
 
-- **GitHub Pages** : activez Pages dans les réglages du dépôt → votre page sera en ligne à `https://<votre-user>.github.io/work/`
-- **Netlify / Vercel** : glissez-déposez le dossier, en ligne en 30 secondes.
+### Structure (60 secondes)
+1. **0–3 s · Le hook** — une question ou un fait choc.
+   > « Savais-tu que ce pays a changé 3 fois de nom en 100 ans ? »
+2. **3–15 s · L'origine** — comment le pays est né (carte à l'appui).
+3. **15–40 s · 2 ou 3 moments clés** — dates marquantes, en rythme rapide.
+4. **40–55 s · L'anecdote surprenante** — le fait que personne ne connaît.
+5. **55–60 s · Le CTA** — « Abonne-toi, le prochain pays c'est... [teasing] ».
 
-## 📈 Conseils pour des shorts viraux
+### Les 6 règles pour la viralité
+1. **Hook dès la 1ʳᵉ seconde** — sinon les gens scrollent.
+2. **Format vertical 9:16** + **sous-titres animés** (80 % regardent sans son).
+3. **Rythme rapide** : une info toutes les 3–4 secondes.
+4. **Cartes & visuels** qui bougent (zoom, apparition de dates).
+5. **Une seule idée par vidéo**, claire et mémorable.
+6. **Régularité** : publiez souvent et déclinez une série reconnaissable.
 
-1. **Hook dès la 1ʳᵉ seconde** — posez une question ou montrez le résultat final tout de suite.
-2. **Format vertical 9:16**, sous-titres toujours activés (80 % regardent sans son).
-3. **Durée 15–30 s** pour maximiser le taux de complétion.
-4. **Un seul message par vidéo** — clair et mémorable.
-5. **Publiez régulièrement** (idéalement chaque jour) et surfez sur les sons/tendances du moment.
-6. **CTA final** : « Abonne-toi pour la partie 2 » booste la rétention et les abos.
+### Outils recommandés (gratuits ou simples)
+- **Montage** : CapCut, DaVinci Resolve
+- **Cartes animées** : Google Earth Studio (gratuit), MapChart
+- **Voix off** : votre voix, ou ElevenLabs / TikTok TTS
+- **Musique libre de droits** : YouTube Audio Library, Epidemic Sound
+- **Sous-titres auto** : CapCut (bouton « Sous-titres automatiques »)
+
+### ⚠️ Fiabilité des sources
+Comme c'est du contenu **éducatif**, vérifiez chaque date/fait sur **au moins 2 sources** (Wikipédia + un site d'histoire ou une encyclopédie). Votre crédibilité = votre croissance.
+
+---
+
+## 📅 Exemple de calendrier (1 pays / jour)
+
+| Jour | Pays | Angle |
+|------|------|-------|
+| Lun | 🇫🇷 France | Comment la France est née |
+| Mar | 🇯🇵 Japon | Les samouraïs à l'ère moderne |
+| Mer | 🇪🇬 Égypte | 5000 ans en 1 minute |
+| Jeu | 🇧🇷 Brésil | Pourquoi on y parle portugais |
+| Ven | 🇲🇦 Maroc | La plus vieille université du monde |
+| Sam | 🇮🇳 Inde | L'indépendance en 60 s |
+| Dim | 🗳️ Sondage | Le public choisit le pays de la semaine |
