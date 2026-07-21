@@ -1,0 +1,4 @@
+episodes/render/out/
+episodes/render/*.mp4
+episodes/render/*.webm
+episodes/render/node_modules_pw

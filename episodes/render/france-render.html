@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>La France en 1 minute — rendu</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:100%; height:100%; background:#0a0a0a; overflow:hidden;
+    font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif; }
+
+  /* Plein cadre 9:16 */
+  #stage {
+    position:relative; width:100vw; height:100vh; color:#fff; overflow:hidden;
+    background:linear-gradient(160deg,#1a1206,#2b1c0c 45%,#0f0a04);
+  }
+
+  .brand { position:absolute; top:3vh; left:0; right:0; text-align:center; z-index:20;
+    font-size:3.4vw; font-weight:800; letter-spacing:.14em; color:#d4a24e; text-transform:uppercase; opacity:.9; }
+  .brand small { display:block; font-size:2.4vw; letter-spacing:.2em; color:#b9a888; font-weight:600; margin-top:.6vh; }
+
+  .bar { position:absolute; top:0; left:0; height:1vh; width:0; z-index:30;
+    background:linear-gradient(90deg,#d4a24e,#8c4a2f); animation:prog 60s linear forwards; }
+  @keyframes prog { to { width:100%; } }
+
+  .scene { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:6vh 7vw; opacity:0; animation-fill-mode:both; }
+
+  .flag { font-size:17vw; margin-bottom:2vh; filter:drop-shadow(0 6px 14px rgba(0,0,0,.5)); }
+  .date { display:inline-block; font-size:9vw; font-weight:900; color:#d4a24e; letter-spacing:.02em;
+    padding:.4vh 4vw; border:.4vh solid rgba(212,162,78,.5); border-radius:999px; margin-bottom:2.5vh;
+    font-variant-numeric:tabular-nums; }
+  .big { font-size:8.4vw; font-weight:900; line-height:1.15; letter-spacing:-.01em; }
+  .sub { font-size:5vw; font-weight:600; color:#e8dcc4; margin-top:2vh; line-height:1.4; }
+  .emoji { font-size:15vw; margin-bottom:1.5vh; }
+  .hook { font-size:9vw; font-weight:900; line-height:1.2; }
+  .hook em { color:#d4a24e; font-style:normal; }
+
+  .caption { position:absolute; bottom:9vh; left:0; right:0; z-index:15; text-align:center;
+    padding:0 7vw; font-size:5.4vw; font-weight:800; color:#fff; opacity:0;
+    text-shadow:0 2px 8px rgba(0,0,0,.8); animation-fill-mode:both; }
+
+  @keyframes sc { 0%{opacity:0; transform:translateY(2vh) scale(.98);} 12%{opacity:1; transform:none;}
+    88%{opacity:1; transform:none;} 100%{opacity:0; transform:translateY(-1.5vh);} }
+  @keyframes cap { 0%{opacity:0;} 10%{opacity:1;} 90%{opacity:1;} 100%{opacity:0;} }
+
+  #s0{ animation:sc 4s 0s;}   #c0{ animation:cap 4s 0s;}
+  #s1{ animation:sc 6s 4s;}   #c1{ animation:cap 6s 4s;}
+  #s2{ animation:sc 6s 10s;}  #c2{ animation:cap 6s 10s;}
+  #s3{ animation:sc 6s 16s;}  #c3{ animation:cap 6s 16s;}
+  #s4{ animation:sc 6s 22s;}  #c4{ animation:cap 6s 22s;}
+  #s5{ animation:sc 7s 28s;}  #c5{ animation:cap 7s 28s;}
+  #s6{ animation:sc 6s 35s;}  #c6{ animation:cap 6s 35s;}
+  #s7{ animation:sc 6s 41s;}  #c7{ animation:cap 6s 41s;}
+  #s8{ animation:sc 7s 47s;}  #c8{ animation:cap 7s 47s;}
+  #s9{ animation:sc 6s 54s;}  #c9{ animation:cap 6s 54s;}
+</style>
+</head>
+<body>
+  <div id="stage">
+    <div class="bar"></div>
+    <div class="brand">1 Minute d'Histoire<small>La France</small></div>
+
+    <div class="scene" id="s0"><div class="emoji">🤔</div><div class="hook">Comment un royaume de <em>Francs</em> est devenu <em>la France&nbsp;?</em></div></div>
+    <div class="scene" id="s1"><div class="date">-52</div><div class="big">La Gaule tombe</div><div class="sub">Jules César bat Vercingétorix à Alésia.<br>Rome dirige pendant 500 ans.</div></div>
+    <div class="scene" id="s2"><div class="date">481</div><div class="big">Clovis, roi des Francs</div><div class="sub">Il unifie les tribus et se convertit au christianisme.<br>Le nom « France » vient de son peuple.</div></div>
+    <div class="scene" id="s3"><div class="date">800</div><div class="big">Charlemagne, empereur</div><div class="sub">Un empire immense… qui se divisera à sa mort.</div></div>
+    <div class="scene" id="s4"><div class="date">987</div><div class="big">Hugues Capet</div><div class="sub">Début d'une dynastie qui régnera 800 ans.<br>Paris devient le cœur du pouvoir.</div></div>
+    <div class="scene" id="s5"><div class="date">1789</div><div class="big">La Révolution 🔥</div><div class="sub">Fin de la monarchie absolue.<br>« Liberté, Égalité, Fraternité. »</div></div>
+    <div class="scene" id="s6"><div class="date">1804</div><div class="big">Napoléon</div><div class="sub">Il conquiert l'Europe… puis tombe à Waterloo (1815).</div></div>
+    <div class="scene" id="s7"><div class="date">1958</div><div class="big">La Ve République</div><div class="sub">Après 2 guerres mondiales, la France d'aujourd'hui.</div></div>
+    <div class="scene" id="s8"><div class="emoji">🤯</div><div class="big">Le sais-tu&nbsp;?</div><div class="sub">La France a eu <b>5 républiques, 2 empires et 3 monarchies</b><br>en seulement 200 ans.</div></div>
+    <div class="scene" id="s9"><div class="flag">🇫🇷➡️🇯🇵</div><div class="big">Abonne-toi&nbsp;!</div><div class="sub">Prochain pays : le <b>Japon</b> 🇯🇵</div></div>
+
+    <div class="caption" id="c0">Comment les Francs ont donné la France ?</div>
+    <div class="caption" id="c1">-52 : César conquiert la Gaule.</div>
+    <div class="caption" id="c2">481 : Clovis fonde le royaume franc.</div>
+    <div class="caption" id="c3">800 : Charlemagne devient empereur.</div>
+    <div class="caption" id="c4">987 : les Capétiens, Paris au centre.</div>
+    <div class="caption" id="c5">1789 : la Révolution française.</div>
+    <div class="caption" id="c6">1804 : Napoléon, empire et chute.</div>
+    <div class="caption" id="c7">1958 : la Ve République actuelle.</div>
+    <div class="caption" id="c8">5 républiques en 200 ans !</div>
+    <div class="caption" id="c9">Abonne-toi — prochain pays : le Japon !</div>
+  </div>
+</body>
+</html>
