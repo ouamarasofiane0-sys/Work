@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>La France en 1 minute — 1 Minute d'Histoire</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { height:100%; background:#0a0a0a; font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif; overflow:hidden; }
+
+  /* Cadre vertical 9:16 centré (1080x1920 mis à l'échelle) */
+  #stage {
+    position:relative; width:405px; height:720px; margin:auto; top:50%; transform:translateY(-50%);
+    border-radius:22px; overflow:hidden; color:#fff;
+    background:linear-gradient(160deg,#1a1206,#2b1c0c 45%,#0f0a04);
+    box-shadow:0 30px 90px rgba(0,0,0,.6);
+  }
+  @media (min-width:900px){ #stage{ transform:translateY(-50%) scale(1.05);} }
+
+  /* Bandeau chaîne */
+  .brand { position:absolute; top:20px; left:0; right:0; text-align:center; z-index:20;
+    font-size:14px; font-weight:800; letter-spacing:.14em; color:#d4a24e; text-transform:uppercase; opacity:.9; }
+  .brand small { display:block; font-size:10px; letter-spacing:.2em; color:#b9a888; font-weight:600; margin-top:2px; }
+
+  /* Barre de progression */
+  .bar { position:absolute; top:0; left:0; height:5px; width:0; z-index:30;
+    background:linear-gradient(90deg,#d4a24e,#8c4a2f); }
+  .playing .bar { animation:prog 60s linear forwards; }
+  @keyframes prog { to { width:100%; } }
+
+  /* Scènes */
+  .scene { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:40px 28px; opacity:0; }
+  .playing .scene { animation-fill-mode:both; }
+
+  .flag { font-size:70px; margin-bottom:14px; filter:drop-shadow(0 6px 14px rgba(0,0,0,.5)); }
+  .date { display:inline-block; font-size:30px; font-weight:900; color:#d4a24e; letter-spacing:.02em;
+    padding:2px 16px; border:2px solid rgba(212,162,78,.5); border-radius:999px; margin-bottom:18px; }
+  .big { font-size:32px; font-weight:900; line-height:1.15; letter-spacing:-.01em; }
+  .sub { font-size:19px; font-weight:600; color:#e8dcc4; margin-top:14px; line-height:1.35; }
+  .emoji { font-size:56px; margin-bottom:10px; }
+  .hook { font-size:34px; font-weight:900; line-height:1.2; }
+  .hook em { color:#d4a24e; font-style:normal; }
+
+  /* Sous-titres bas (style TikTok) */
+  .caption { position:absolute; bottom:70px; left:0; right:0; z-index:15; text-align:center;
+    padding:0 26px; font-size:20px; font-weight:800; color:#fff; opacity:0;
+    text-shadow:0 2px 8px rgba(0,0,0,.8); }
+  .playing .caption { animation-fill-mode:both; }
+
+  /* Chaque scène : fade in / hold / fade out */
+  @keyframes sc { 0%{opacity:0; transform:translateY(14px) scale(.98);} 12%{opacity:1; transform:none;}
+    88%{opacity:1; transform:none;} 100%{opacity:0; transform:translateY(-10px);} }
+  @keyframes cap { 0%{opacity:0;} 10%{opacity:1;} 90%{opacity:1;} 100%{opacity:0;} }
+
+  /* Timeline (start / durée) */
+  .playing #s0{ animation:sc 4s 0s;}      .playing #c0{ animation:cap 4s 0s;}
+  .playing #s1{ animation:sc 6s 4s;}      .playing #c1{ animation:cap 6s 4s;}
+  .playing #s2{ animation:sc 6s 10s;}     .playing #c2{ animation:cap 6s 10s;}
+  .playing #s3{ animation:sc 6s 16s;}     .playing #c3{ animation:cap 6s 16s;}
+  .playing #s4{ animation:sc 6s 22s;}     .playing #c4{ animation:cap 6s 22s;}
+  .playing #s5{ animation:sc 7s 28s;}     .playing #c5{ animation:cap 7s 28s;}
+  .playing #s6{ animation:sc 6s 35s;}     .playing #c6{ animation:cap 6s 35s;}
+  .playing #s7{ animation:sc 6s 41s;}     .playing #c7{ animation:cap 6s 41s;}
+  .playing #s8{ animation:sc 7s 47s;}     .playing #c8{ animation:cap 7s 47s;}
+  .playing #s9{ animation:sc 6s 54s;}     .playing #c9{ animation:cap 6s 54s;}
+
+  /* Bouton de lancement */
+  #play { position:absolute; inset:0; z-index:50; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background:rgba(10,8,4,.8); cursor:pointer; gap:14px; }
+  #play .btn { width:76px; height:76px; border-radius:50%; background:linear-gradient(135deg,#d4a24e,#8c4a2f);
+    display:grid; place-items:center; box-shadow:0 10px 30px rgba(140,74,47,.6); }
+  #play .btn svg { width:30px; height:30px; fill:#fff; margin-left:4px; }
+  #play p { font-size:14px; color:#e8dcc4; font-weight:600; }
+  #play h2 { font-size:22px; font-weight:900; color:#fff; }
+  .playing #play { display:none; }
+
+  .hint { position:fixed; bottom:16px; left:0; right:0; text-align:center; color:#7a6f5c; font-size:12px; }
+</style>
+</head>
+<body>
+  <div id="stage">
+    <div class="bar"></div>
+    <div class="brand">1 Minute d'Histoire<small>La France</small></div>
+
+    <!-- 0 · HOOK -->
+    <div class="scene" id="s0">
+      <div class="emoji">🤔</div>
+      <div class="hook">Comment un royaume de <em>Francs</em> est devenu <em>la France&nbsp;?</em></div>
+    </div>
+    <!-- 1 · Gaulois -->
+    <div class="scene" id="s1">
+      <div class="date">-52</div>
+      <div class="big">La Gaule tombe</div>
+      <div class="sub">Jules César bat Vercingétorix à Alésia.<br>Rome dirige pendant 500 ans.</div>
+    </div>
+    <!-- 2 · Clovis -->
+    <div class="scene" id="s2">
+      <div class="date">481</div>
+      <div class="big">Clovis, roi des Francs</div>
+      <div class="sub">Il unifie les tribus et se convertit au christianisme.<br>Le nom « France » vient de son peuple.</div>
+    </div>
+    <!-- 3 · Charlemagne -->
+    <div class="scene" id="s3">
+      <div class="date">800</div>
+      <div class="big">Charlemagne, empereur</div>
+      <div class="sub">Un empire immense… qui se divisera à sa mort.</div>
+    </div>
+    <!-- 4 · Capétiens -->
+    <div class="scene" id="s4">
+      <div class="date">987</div>
+      <div class="big">Hugues Capet</div>
+      <div class="sub">Début d'une dynastie qui régnera 800 ans.<br>Paris devient le cœur du pouvoir.</div>
+    </div>
+    <!-- 5 · Révolution -->
+    <div class="scene" id="s5">
+      <div class="date">1789</div>
+      <div class="big">La Révolution 🔥</div>
+      <div class="sub">Fin de la monarchie absolue.<br>« Liberté, Égalité, Fraternité. »</div>
+    </div>
+    <!-- 6 · Napoléon -->
+    <div class="scene" id="s6">
+      <div class="date">1804</div>
+      <div class="big">Napoléon</div>
+      <div class="sub">Il conquiert l'Europe… puis tombe à Waterloo (1815).</div>
+    </div>
+    <!-- 7 · République -->
+    <div class="scene" id="s7">
+      <div class="date">1958</div>
+      <div class="big">La Ve République</div>
+      <div class="sub">Après 2 guerres mondiales, la France d'aujourd'hui.</div>
+    </div>
+    <!-- 8 · Anecdote -->
+    <div class="scene" id="s8">
+      <div class="emoji">🤯</div>
+      <div class="big">Le sais-tu&nbsp;?</div>
+      <div class="sub">La France a eu <b>5 républiques, 2 empires et 3 monarchies</b><br>en seulement 200 ans.</div>
+    </div>
+    <!-- 9 · CTA -->
+    <div class="scene" id="s9">
+      <div class="flag">🇫🇷➡️🇯🇵</div>
+      <div class="big">Abonne-toi&nbsp;!</div>
+      <div class="sub">Prochain pays : le <b>Japon</b> 🇯🇵</div>
+    </div>
+
+    <!-- Sous-titres synchronisés -->
+    <div class="caption" id="c0">Comment les Francs ont donné la France ?</div>
+    <div class="caption" id="c1">-52 : César conquiert la Gaule.</div>
+    <div class="caption" id="c2">481 : Clovis fonde le royaume franc.</div>
+    <div class="caption" id="c3">800 : Charlemagne devient empereur.</div>
+    <div class="caption" id="c4">987 : les Capétiens, Paris au centre.</div>
+    <div class="caption" id="c5">1789 : la Révolution française.</div>
+    <div class="caption" id="c6">1804 : Napoléon, empire et chute.</div>
+    <div class="caption" id="c7">1958 : la Ve République actuelle.</div>
+    <div class="caption" id="c8">5 républiques en 200 ans !</div>
+    <div class="caption" id="c9">Abonne-toi — prochain pays : le Japon !</div>
+
+    <!-- Écran de lancement -->
+    <div id="play">
+      <div class="btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <h2>La France en 1 min</h2>
+      <p>Appuie pour lancer ▶</p>
+    </div>
+  </div>
+
+  <p class="hint">💡 Ouvre en plein écran et enregistre l'écran (CapCut / OBS) pour créer ta vidéo. Recharge la page pour rejouer.</p>
+
+  <script>
+    const stage = document.getElementById('stage');
+    document.getElementById('play').addEventListener('click', () => {
+      stage.classList.add('playing');
+    });
+  </script>
+</body>
+</html>
