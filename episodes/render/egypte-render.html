@@ -3,361 +3,394 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>L'Égypte — 5 secrets fous</title>
+<title>L'Égypte — Histoires vraies</title>
 <link rel="stylesheet" href="fonts.css" />
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  html,body { width:100%; height:100%; overflow:hidden; font-family:'Poppins','Liberation Sans',sans-serif; }
+  html,body { width:100%; height:100%; overflow:hidden; font-family:'Patrick Hand',sans-serif; }
 
-  #stage { position:relative; width:100vw; height:100vh; overflow:hidden;
-    background:linear-gradient(180deg,#fbef9f 0%, #f4df83 52%, #eccf6b 100%); }
+  #stage { position:relative; width:100vw; height:100vh; overflow:hidden; background:#f4dc80; }
 
-  /* Toutes les animations démarrent quand les polices sont prêtes (.go) */
   .anim { animation-play-state:paused; }
   body.go .anim { animation-play-state:running; }
 
-  /* ---- Décor + caméra (léger zoom) ---- */
+  /* trait dessiné main */
+  #char, .prop svg, .bg .draw { filter:url(#wob); }
+
   .bg { position:absolute; inset:0; width:100%; height:100%; z-index:1;
-    transform-origin:52% 40%; animation:kenburns 82s ease-in-out both; }
-  @keyframes kenburns { 0%{transform:scale(1.02);} 100%{transform:scale(1.13);} }
+    transform-origin:52% 42%; animation:kenburns 111s ease-in-out both; }
+  @keyframes kenburns { 0%{transform:scale(1.03);} 100%{transform:scale(1.12);} }
 
-  /* poussière dorée */
   #dust { position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none; }
-
-  /* vignette cinématographique */
   .vignette { position:absolute; inset:0; z-index:7; pointer-events:none;
-    background:radial-gradient(120% 90% at 50% 42%, rgba(0,0,0,0) 55%, rgba(70,45,5,.28) 100%); }
+    background:radial-gradient(120% 92% at 50% 44%, rgba(0,0,0,0) 56%, rgba(70,45,5,.26) 100%); }
 
-  .brand { position:absolute; top:2.4vh; left:0; right:0; text-align:center; z-index:8;
-    font-family:'Poppins'; font-weight:800; font-size:2.9vw; letter-spacing:.22em; color:#7a5c14;
-    text-transform:uppercase; opacity:.85; }
-  .bar { position:absolute; top:0; left:0; height:.9vh; width:0; z-index:9; border-radius:0 4px 4px 0;
-    background:linear-gradient(90deg,#e0a52c,#8a5a12); animation:prog 82s linear both; }
+  .brand { position:absolute; top:2.6vh; left:0; right:0; text-align:center; z-index:8;
+    font-family:'Permanent Marker'; font-size:3.4vw; letter-spacing:.04em; color:#9a6a1e; opacity:.9; }
+  .bar { position:absolute; top:0; left:0; height:1vh; width:0; z-index:9;
+    background:#c0492f; animation:prog 111s linear both; }
   @keyframes prog { to { width:100%; } }
 
-  /* ---- Zone texte ---- */
+  /* ---- Texte ---- */
   .scenes { position:absolute; top:0; left:0; right:0; height:40vh; z-index:6; }
-  .scene { position:absolute; top:7vh; left:0; right:0; padding:0 6vw; text-align:center;
-    opacity:0; animation-fill-mode:both; display:flex; flex-direction:column; align-items:center; gap:1.7vh; }
-
-  .eyebrow { font-family:'Anton'; font-size:4.8vw; letter-spacing:.04em; text-transform:uppercase;
-    background:#2b2016; color:#ffd97a; padding:.5vh 4.5vw; border-radius:1.4vw; box-shadow:0 .7vh 0 #a9791f; }
-  .headline { font-family:'Anton'; font-size:11vw; line-height:.96; text-transform:uppercase;
-    color:#2b1c0c; letter-spacing:.004em;
-    text-shadow:0 .35vh 0 rgba(255,255,255,.35), 0 .8vh 0 rgba(0,0,0,.14), 0 1.4vh 2.2vh rgba(120,80,10,.22); }
-  .headline.big { font-size:15.5vw; }
-  .sub { font-family:'Poppins'; font-weight:800; font-size:4.9vw; color:#5a4020; line-height:1.22; max-width:86vw;
-    text-shadow:0 1px 0 rgba(255,255,255,.35); }
+  .scene { position:absolute; top:6vh; left:0; right:0; padding:0 7vw; text-align:center;
+    opacity:0; animation-fill-mode:both; display:flex; flex-direction:column; align-items:center; gap:1.5vh; }
+  .eyebrow { font-family:'Permanent Marker'; font-size:4.6vw; color:#fff; background:#c0492f;
+    padding:.4vh 4.5vw; border-radius:2vw 3vw 2vw 3vw; transform:rotate(-2deg);
+    box-shadow:.6vh .6vh 0 #2b2016; }
+  .headline { font-family:'Permanent Marker'; font-size:10vw; line-height:1; color:#26201a;
+    text-shadow:.5vh .5vh 0 rgba(255,255,255,.5); }
+  .headline.big { font-size:12.5vw; }
+  .sub { font-family:'Patrick Hand'; font-size:5.6vw; color:#3f3222; line-height:1.18; max-width:88vw; }
   .pop { color:#c0492f; }
+  .pop2 { color:#2f6fb0; }
 
-  /* Timeline commune (texte + illustrations) */
-  #s0,.t0{ animation:sc 5s 0s;}
-  #s1,.t1{ animation:sc 13s 5s;}
-  #s2,.t2{ animation:sc 13s 18s;}
-  #s3,.t3{ animation:sc 13s 31s;}
-  #s4,.t4{ animation:sc 13s 44s;}
-  #s5,.t5{ animation:sc 15s 57s;}
-  #s6,.t6{ animation:sc 10s 72s;}
+  #s0,.t0{ animation:sc 6s 0s;}
+  #s1,.t1{ animation:sc 8s 6s;}   #s2,.t2{ animation:sc 8s 14s;}  #s3,.t3{ animation:sc 8s 22s;}
+  #s4,.t4{ animation:sc 8s 30s;}  #s5,.t5{ animation:sc 8s 38s;}  #s6,.t6{ animation:sc 8s 46s;}
+  #s7,.t7{ animation:sc 8s 54s;}  #s8,.t8{ animation:sc 8s 62s;}  #s9,.t9{ animation:sc 8s 70s;}
+  #s10,.t10{ animation:sc 8s 78s;} #s11,.t11{ animation:sc 8s 86s;} #s12,.t12{ animation:sc 9s 94s;}
+  #s13,.t13{ animation:sc 8s 103s;}
   @keyframes sc {
-    0%{opacity:0; transform:translateY(4vh) scale(.82);}
-    6%{opacity:1; transform:translateY(0) scale(1.05);}
-    10%{transform:scale(1);}
+    0%{opacity:0; transform:translateY(3.5vh) scale(.85) rotate(-1deg);}
+    9%{opacity:1; transform:translateY(0) scale(1.04) rotate(0deg);}
+    14%{transform:scale(1);}
     90%{opacity:1; transform:scale(1);}
-    100%{opacity:0; transform:translateY(-2.5vh) scale(.95);}
+    100%{opacity:0; transform:translateY(-2vh) scale(.95);}
   }
 
   /* ---- Illustrations ---- */
   .prop { position:absolute; z-index:5; opacity:0; animation-fill-mode:both; }
   .prop svg { width:100%; height:auto; display:block; overflow:visible; }
-  .prop .inner { animation:floaty 2.8s ease-in-out infinite; transform-origin:center; }
-  .prop:nth-of-type(even) .inner { animation-duration:3.3s; animation-delay:-.7s; }
+  .prop .inner { animation:floaty 2.9s ease-in-out infinite; transform-origin:center; }
+  .prop:nth-of-type(even) .inner { animation-duration:3.4s; animation-delay:-.8s; }
   @keyframes floaty { 0%,100%{transform:translateY(0) rotate(-2deg);} 50%{transform:translateY(-16px) rotate(2deg);} }
-  .plabel { margin-top:.6vh; text-align:center; font-family:'Poppins'; font-weight:800; font-size:3.1vw;
-    color:#4a3418; text-transform:uppercase; letter-spacing:.01em; }
-  .slotL  { left:2vw;  top:41vh; width:29vw; }
-  .slotR  { right:2vw; top:41vh; width:29vw; }
-  .slotL2 { left:3vw;  top:62vh; width:24vw; }
-  .slotR2 { right:3vw; top:61vh; width:25vw; }
+  .plabel { margin-top:.5vh; text-align:center; font-family:'Permanent Marker'; font-size:3.2vw;
+    color:#3f3222; }
+  .slotL  { left:2vw;  top:41vh; width:30vw; }
+  .slotR  { right:2vw; top:41vh; width:30vw; }
+  .slotL2 { left:3vw;  top:63vh; width:25vw; }
+  .slotR2 { right:3vw; top:62vh; width:25vw; }
 
   /* ---- Personnage ---- */
   .pharaoh { position:absolute; bottom:0; left:50%; transform:translateX(-50%);
-    height:57vh; width:auto; z-index:4; }
-  #react { animation:react 82s linear both; transform-origin:150px 505px; transform-box:view-box; }
-  #sway  { animation:sway 5.2s ease-in-out infinite; transform-origin:150px 505px; transform-box:view-box; }
+    height:56vh; width:auto; z-index:4; }
+  #react { animation:react 111s linear both; transform-origin:150px 505px; transform-box:view-box; }
+  #sway  { animation:sway 5s ease-in-out infinite; transform-origin:150px 505px; transform-box:view-box; }
   #bob   { animation:bob 2.5s ease-in-out infinite; }
   #breathe { animation:breathe 3.4s ease-in-out infinite; transform-origin:150px 300px; transform-box:view-box; }
-  #eyes  { animation:blink 4.6s infinite; transform-origin:150px 150px; transform-box:fill-box; }
-  #brows { animation:brow 3.3s ease-in-out infinite; transform-origin:150px 140px; transform-box:view-box; }
-  #mouthMove { animation:talk .6s infinite; transform-origin:150px 179px; transform-box:view-box; }
-  #armPoint { animation:point 2.5s ease-in-out infinite; transform-origin:182px 262px; transform-box:view-box; }
+  #eyelids { animation:blink 4.4s infinite; transform-origin:150px 150px; transform-box:fill-box; }
+  #pupils { animation:look 6s ease-in-out infinite; }
+  #brows { animation:brow 3.2s ease-in-out infinite; transform-origin:150px 132px; transform-box:view-box; }
+  #mouthMove { animation:talk .55s infinite; transform-origin:150px 176px; transform-box:view-box; }
+  #armPoint { animation:point 2.5s ease-in-out infinite; transform-origin:184px 260px; transform-box:view-box; }
 
-  @keyframes bob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-13px);} }
-  @keyframes sway { 0%,100%{transform:rotate(-2.2deg);} 50%{transform:rotate(2.2deg);} }
-  @keyframes breathe { 0%,100%{transform:scaleY(1) scaleX(1);} 50%{transform:scaleY(1.03) scaleX(1.01);} }
-  @keyframes blink { 0%,93%,100%{transform:scaleY(1);} 96%{transform:scaleY(.08);} }
-  @keyframes brow { 0%,100%{transform:translateY(0);} 45%{transform:translateY(-3.5px);} 55%{transform:translateY(-3.5px);} }
-  @keyframes point {
-    0%{transform:rotate(3deg);} 25%{transform:rotate(-13deg);} 50%{transform:rotate(-3deg);}
-    75%{transform:rotate(-15deg);} 100%{transform:rotate(3deg);} }
+  @keyframes bob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
+  @keyframes sway { 0%,100%{transform:rotate(-2.4deg);} 50%{transform:rotate(2.4deg);} }
+  @keyframes breathe { 0%,100%{transform:scaleY(1);} 50%{transform:scaleY(1.03);} }
+  @keyframes blink { 0%,92%,100%{transform:scaleY(0);} 95%{transform:scaleY(1);} }
+  @keyframes look { 0%,40%{transform:translateX(0);} 55%,75%{transform:translateX(5px);} 90%,100%{transform:translateX(0);} }
+  @keyframes brow { 0%,100%{transform:translateY(0);} 45%,55%{transform:translateY(-4px);} }
+  @keyframes point { 0%{transform:rotate(4deg);} 25%{transform:rotate(-14deg);} 50%{transform:rotate(-4deg);} 75%{transform:rotate(-16deg);} 100%{transform:rotate(4deg);} }
   @keyframes talk {
-    0%{transform:scaleY(.12);} 10%{transform:scaleY(1);} 20%{transform:scaleY(.35);}
-    32%{transform:scaleY(.92);} 44%{transform:scaleY(.2);} 56%{transform:scaleY(1);}
-    68%{transform:scaleY(.3);} 80%{transform:scaleY(.85);} 90%{transform:scaleY(.15);} 100%{transform:scaleY(.45);} }
-  /* petits sursauts à chaque nouveau secret */
+    0%{transform:scaleY(.1);} 12%{transform:scaleY(1);} 24%{transform:scaleY(.35);}
+    38%{transform:scaleY(.95);} 50%{transform:scaleY(.2);} 64%{transform:scaleY(1);}
+    76%{transform:scaleY(.3);} 88%{transform:scaleY(.8);} 100%{transform:scaleY(.15);} }
   @keyframes react {
-    0%{transform:scale(1);}
-    6.1%{transform:scale(1);} 6.7%{transform:scale(1.06);} 7.6%{transform:scale(1);}
-    22%{transform:scale(1);} 22.6%{transform:scale(1.06);} 23.5%{transform:scale(1);}
-    37.8%{transform:scale(1);} 38.4%{transform:scale(1.06);} 39.3%{transform:scale(1);}
-    53.7%{transform:scale(1);} 54.3%{transform:scale(1.06);} 55.2%{transform:scale(1);}
-    69.5%{transform:scale(1);} 70.1%{transform:scale(1.06);} 71%{transform:scale(1);}
-    87.8%{transform:scale(1);} 88.4%{transform:scale(1.08);} 89.3%{transform:scale(1);}
-    100%{transform:scale(1);} }
+    0%,4.5%{transform:scale(1);} 5.4%{transform:scale(1.07);} 6.5%{transform:scale(1);}
+    26%{transform:scale(1);} 27%{transform:scale(1.07);} 28.2%{transform:scale(1);}
+    47.7%{transform:scale(1);} 48.6%{transform:scale(1.07);} 49.8%{transform:scale(1);}
+    69.4%{transform:scale(1);} 70.3%{transform:scale(1.07);} 71.5%{transform:scale(1);}
+    91.9%{transform:scale(1);} 92.8%{transform:scale(1.09);} 94%{transform:scale(1);} 100%{transform:scale(1);} }
 
   @media (prefers-reduced-motion: reduce) { .anim{ animation-duration:.01ms !important; } }
 </style>
 </head>
 <body>
+  <!-- filtre trait main -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <filter id="wob" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs></svg>
+
   <div id="stage">
 
     <!-- DÉCOR -->
-    <svg class="bg anim" viewBox="0 0 108 192" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <radialGradient id="sunG" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#fff6c8"/><stop offset="70%" stop-color="#fdf0a4"/><stop offset="100%" stop-color="#f7e488"/>
-        </radialGradient>
-      </defs>
-      <circle cx="86" cy="26" r="20" fill="url(#sunG)" opacity=".7"/>
-      <circle cx="86" cy="26" r="13" fill="#fdf3b4"/>
-      <polygon points="20,92 2,124 38,124" fill="#e2c368" stroke="#b8973c" stroke-width="1" stroke-linejoin="round"/>
-      <polygon points="86,96 66,124 106,124" fill="#e2c368" stroke="#b8973c" stroke-width="1" stroke-linejoin="round"/>
-      <polygon points="54,68 28,124 80,124" fill="#e7cb74" stroke="#b8973c" stroke-width="1.2" stroke-linejoin="round"/>
-      <line x1="54" y1="68" x2="54" y2="124" stroke="#cbaa50" stroke-width=".8"/>
-      <rect x="0" y="124" width="108" height="68" fill="#eccf6b"/>
-      <path d="M0 124 Q 54 130 108 124 L108 192 L0 192 Z" fill="#e6c65f"/>
+    <svg class="bg" viewBox="0 0 108 192" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect x="0" y="0" width="108" height="192" fill="#f4dc80"/>
+      <g class="draw" stroke="#26201a" stroke-linejoin="round">
+        <circle cx="98" cy="15" r="8.5" fill="#ffd23f" stroke-width="1.4"/>
+        <polygon points="20,94 0,126 40,126" fill="#e8c559" stroke-width="1.4"/>
+        <polygon points="88,98 66,126 108,126" fill="#e8c559" stroke-width="1.4"/>
+        <polygon points="54,66 26,126 82,126" fill="#eccf6b" stroke-width="1.6"/>
+        <line x1="54" y1="66" x2="54" y2="126" stroke="#c9a94e" stroke-width="1"/>
+        <line x1="0" y1="126" x2="108" y2="126" stroke-width="1.4"/>
+      </g>
+      <rect x="0" y="126" width="108" height="66" fill="#e6c862"/>
     </svg>
 
     <canvas id="dust" class="anim"></canvas>
-
     <div class="brand">1 Minute d'Histoire</div>
     <div class="bar anim"></div>
 
     <!-- ================= TEXTES ================= -->
     <div class="scenes">
       <div class="scene anim" id="s0">
-        <div class="headline big">L'Égypte</div>
-        <div class="sub">5 secrets fous que <span class="pop">personne</span> ne t'a appris</div>
+        <div class="headline big">L'Égypte antique</div>
+        <div class="sub">3000 ans d'histoire — et <span class="pop">4 récits</span> qui vont te retourner le cerveau.</div>
       </div>
+
       <div class="scene anim" id="s1">
-        <div class="eyebrow">Secret n°5</div>
-        <div class="headline">Cléopâtre</div>
-        <div class="sub">a vécu plus près de <span class="pop">l'iPhone</span> que des pyramides 🤯</div>
+        <div class="eyebrow">Cléopâtre</div>
+        <div class="headline">Née trop tard</div>
+        <div class="sub">À sa naissance, les pyramides ont <span class="pop">déjà 2500 ans</span>. Elle allait les visiter… comme une touriste.</div>
       </div>
       <div class="scene anim" id="s2">
-        <div class="eyebrow">Secret n°4</div>
-        <div class="headline">Les pyramides</div>
-        <div class="sub">bâties par des <span class="pop">ouvriers payés</span> en pain et en bière — pas des esclaves !</div>
+        <div class="headline">Pas égyptienne&nbsp;!</div>
+        <div class="sub">Cléopâtre était <span class="pop2">grecque</span> — la dernière d'une dynastie née d'Alexandre le Grand.</div>
       </div>
       <div class="scene anim" id="s3">
-        <div class="eyebrow">Secret n°3</div>
-        <div class="headline">Ils avaient déjà</div>
-        <div class="sub">le <span class="pop">dentifrice</span>, un calendrier de <span class="pop">365 jours</span> et le papyrus</div>
+        <div class="headline">Elle parlait 9 langues</div>
+        <div class="sub">Première de sa lignée à apprendre l'égyptien. Sa mort en <span class="pop">−30</span> met fin à 3000 ans de pharaons.</div>
       </div>
+
       <div class="scene anim" id="s4">
-        <div class="eyebrow">Secret n°2</div>
-        <div class="headline">Ramsès II</div>
-        <div class="sub"><span class="pop">90 ans</span> de vie et plus de <span class="pop">100 enfants</span> 👑</div>
+        <div class="eyebrow">Les bâtisseurs</div>
+        <div class="headline">Pas des esclaves</div>
+        <div class="sub">On a retrouvé leurs villages et leurs tombes, <span class="pop">juste à côté</span> de celles des rois.</div>
       </div>
       <div class="scene anim" id="s5">
-        <div class="eyebrow">Secret n°1</div>
-        <div class="headline">Les chats sacrés</div>
-        <div class="sub">en tuer un était puni de <span class="pop">peine de mort</span> !</div>
+        <div class="headline">Payés en bière</div>
+        <div class="sub">Chaque ouvrier recevait du pain et de la bière — jusqu'à <span class="pop">4 litres par jour</span>.</div>
       </div>
       <div class="scene anim" id="s6">
-        <div class="headline big">Abonne-toi 🔥</div>
-        <div class="sub">un nouveau pays à découvrir chaque jour</div>
+        <div class="headline">2,3 millions de blocs</div>
+        <div class="sub"><span class="pop">2,5 tonnes</span> chacun, empilés en 20 ans. Sans roue, sans fer, sans poulie.</div>
+      </div>
+
+      <div class="scene anim" id="s7">
+        <div class="eyebrow">En avance sur tout</div>
+        <div class="headline">365 jours</div>
+        <div class="sub">Il y a 4000 ans, ils avaient déjà <span class="pop">notre calendrier</span> : 12 mois, 365 jours.</div>
+      </div>
+      <div class="scene anim" id="s8">
+        <div class="headline">Ils ont tout inventé</div>
+        <div class="sub">Papyrus, encre, serrure, dentifrice… et même le premier <span class="pop">test de grossesse</span>.</div>
+      </div>
+      <div class="scene anim" id="s9">
+        <div class="headline">Médecins géniaux</div>
+        <div class="sub">Ils recousaient les plaies et mesuraient le pouls, <span class="pop">2000 ans</span> avant les Grecs.</div>
+      </div>
+
+      <div class="scene anim" id="s10">
+        <div class="eyebrow">Les chats sacrés</div>
+        <div class="headline">Protégés d'une déesse</div>
+        <div class="sub">Bastet veillait sur eux. Tuer un chat, même par accident, était puni <span class="pop">de mort</span>.</div>
+      </div>
+      <div class="scene anim" id="s11">
+        <div class="headline">Deuil rasé</div>
+        <div class="sub">À la mort de leur chat, les Égyptiens se rasaient <span class="pop">les sourcils</span>… puis le faisaient momifier.</div>
+      </div>
+      <div class="scene anim" id="s12">
+        <div class="headline">Vaincus par des chats</div>
+        <div class="sub">En −525, les Perses peignent des chats sur leurs boucliers. L'Égypte <span class="pop">refuse de se battre</span>.</div>
+      </div>
+
+      <div class="scene anim" id="s13">
+        <div class="headline big">Et c'est rien&nbsp;!</div>
+        <div class="sub">3000 ans à explorer. <span class="pop">Abonne-toi</span> — demain, un nouveau pays.</div>
       </div>
     </div>
 
     <!-- ================= ILLUSTRATIONS ================= -->
     <div class="prop slotL t0 anim"><div class="inner"><svg viewBox="0 0 120 160">
-      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#e8b53a">
+      <g stroke="#26201a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" fill="#f2b632">
         <circle cx="60" cy="40" r="24" fill="none"/><line x1="60" y1="64" x2="60" y2="140"/><line x1="30" y1="88" x2="90" y2="88"/>
       </g></svg></div></div>
     <div class="prop slotR t0 anim"><div class="inner"><svg viewBox="0 0 160 120">
-      <g stroke="#2b2016" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 60 Q70 25 120 60 Q70 95 20 60 Z" fill="#fff"/>
-        <circle cx="72" cy="60" r="15" fill="#2b5fa5"/><circle cx="72" cy="60" r="6" fill="#2b2016" stroke="none"/>
-        <path d="M72 75 L72 100 M72 100 L92 100" stroke-width="6"/><path d="M40 78 Q55 100 78 96" stroke-width="6"/>
+      <g stroke="#26201a" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 60 Q70 25 120 60 Q70 95 20 60 Z" fill="#fff"/><circle cx="72" cy="60" r="15" fill="#2f6fb0"/>
+        <circle cx="72" cy="60" r="6" fill="#26201a" stroke="none"/><path d="M72 75 L72 100 M72 100 L92 100"/><path d="M40 78 Q55 100 78 96"/>
       </g></svg></div></div>
 
+    <!-- SEG1 Cléopâtre -->
     <div class="prop slotL t1 anim"><div class="inner"><svg viewBox="0 0 200 170">
-      <polygon points="100,20 20,150 180,150" fill="#e7cb74" stroke="#2b2016" stroke-width="6" stroke-linejoin="round"/>
-      <line x1="100" y1="20" x2="100" y2="150" stroke="#c99a3a" stroke-width="4"/>
-      <line x1="100" y1="20" x2="60" y2="150" stroke="#c99a3a" stroke-width="3"/>
-      <line x1="100" y1="20" x2="140" y2="150" stroke="#c99a3a" stroke-width="3"/>
-    </svg><div class="plabel">−2560 av. J.-C.</div></div></div>
-    <div class="prop slotR t1 anim"><div class="inner"><svg viewBox="0 0 130 200">
-      <rect x="20" y="12" width="90" height="176" rx="16" fill="#2b2016"/>
-      <rect x="28" y="30" width="74" height="132" rx="4" fill="#8fd0ff"/>
-      <circle cx="65" cy="176" r="7" fill="#5a5a5a"/>
-      <path d="M65 92 a10 10 0 0 1 20 0 q0 12 -20 24 q-20 -12 -20 -24 a10 10 0 0 1 20 0 z" fill="#e0466a" stroke="none"/>
-    </svg><div class="plabel">aujourd'hui</div></div></div>
+      <polygon points="100,20 20,150 180,150" fill="#eccf6b" stroke="#26201a" stroke-width="7" stroke-linejoin="round"/>
+      <polygon points="100,20 78,55 122,55" fill="#fff6d8" stroke="#26201a" stroke-width="4"/>
+      <line x1="100" y1="20" x2="60" y2="150" stroke="#c99a3a" stroke-width="3"/><line x1="100" y1="20" x2="140" y2="150" stroke="#c99a3a" stroke-width="3"/>
+    </svg><div class="plabel">déjà 2500 ans</div></div></div>
+    <div class="prop slotR t2 anim"><div class="inner"><svg viewBox="0 0 160 200">
+      <g stroke="#26201a" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M40 70 Q40 26 80 26 Q120 26 120 70 L124 120 Q80 138 36 120 Z" fill="#26201a"/>
+        <path d="M52 66 Q80 44 108 66 L108 108 Q80 124 52 108 Z" fill="#e0a45c"/>
+        <rect x="52" y="52" width="56" height="12" fill="#f2b632"/><ellipse cx="80" cy="46" rx="7" ry="7" fill="#2f9d6a"/>
+        <ellipse cx="68" cy="86" rx="4" ry="5" fill="#26201a" stroke="none"/><ellipse cx="92" cy="86" rx="4" ry="5" fill="#26201a" stroke="none"/>
+        <path d="M60 84 l-10 2 M100 84 l10 2"/>
+        <path d="M72 102 q8 5 16 0" fill="none"/>
+        <path d="M60 138 Q80 150 100 138 L104 180 Q80 190 56 180 Z" fill="#7a4bd0"/>
+        <path d="M70 140 Q80 150 90 140" fill="#e8b53a" stroke-width="4"/>
+      </g></svg><div class="plabel">grecque !</div></div></div>
+    <div class="prop slotL2 t3 anim"><div class="inner"><svg viewBox="0 0 130 150">
+      <g stroke="#26201a" stroke-width="6" stroke-linejoin="round">
+        <path d="M25 55 Q25 20 65 20 Q105 20 105 55 L105 140 L25 140 Z" fill="#cbb891"/>
+        <line x1="25" y1="70" x2="105" y2="70"/>
+      </g>
+      <text x="65" y="115" text-anchor="middle" font-family="Bangers" font-size="40" fill="#c0492f">−30</text>
+    </svg><div class="plabel">fin des pharaons</div></div></div>
 
-    <div class="prop slotL t2 anim"><div class="inner"><svg viewBox="0 0 180 200">
-      <rect x="45" y="10" width="90" height="55" rx="6" fill="#d9b46a" stroke="#2b2016" stroke-width="6"/>
-      <line x1="90" y1="10" x2="90" y2="65" stroke="#b8973c" stroke-width="3"/>
-      <g stroke="#2b2016" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="#d9a86b">
-        <circle cx="90" cy="95" r="20"/><path d="M75 112 L70 160 L110 160 L105 112 Z" fill="#c0492f"/>
-        <path d="M78 80 L70 66 M102 80 L110 66" fill="none"/>
-        <line x1="80" y1="160" x2="76" y2="192"/><line x1="100" y1="160" x2="104" y2="192"/>
-      </g></svg><div class="plabel">ouvriers</div></div></div>
-    <div class="prop slotR t2 anim"><div class="inner"><svg viewBox="0 0 200 180">
-      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round">
+    <!-- SEG2 bâtisseurs -->
+    <div class="prop slotL t4 anim"><div class="inner"><svg viewBox="0 0 180 200">
+      <rect x="45" y="10" width="90" height="52" rx="4" fill="#d9b46a" stroke="#26201a" stroke-width="7"/>
+      <g stroke="#26201a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="#e0a45c">
+        <circle cx="90" cy="92" r="20"/><path d="M75 110 L70 158 L110 158 L105 110 Z" fill="#c0492f"/>
+        <path d="M78 78 L70 62 M102 78 L110 62" fill="none"/>
+        <line x1="80" y1="158" x2="76" y2="192"/><line x1="100" y1="158" x2="104" y2="192"/>
+      </g></svg><div class="plabel">ouvriers libres</div></div></div>
+    <div class="prop slotR t5 anim"><div class="inner"><svg viewBox="0 0 200 180">
+      <g stroke="#26201a" stroke-width="7" stroke-linejoin="round">
         <rect x="30" y="55" width="70" height="110" rx="8" fill="#f2b134"/>
-        <path d="M100 75 q34 0 34 32 q0 30 -34 30" fill="none" stroke-width="8"/>
+        <path d="M100 75 q34 0 34 32 q0 30 -34 30" fill="none"/>
         <ellipse cx="65" cy="52" rx="42" ry="18" fill="#fff8ec"/>
         <circle cx="45" cy="44" r="12" fill="#fff8ec"/><circle cx="70" cy="40" r="14" fill="#fff8ec"/><circle cx="90" cy="46" r="11" fill="#fff8ec"/>
         <ellipse cx="158" cy="140" rx="34" ry="24" fill="#d98a3a"/>
         <line x1="140" y1="128" x2="150" y2="152" stroke-width="4"/><line x1="158" y1="122" x2="166" y2="150" stroke-width="4"/><line x1="176" y1="128" x2="182" y2="150" stroke-width="4"/>
-      </g></svg><div class="plabel">payés en bière &amp; pain</div></div></div>
+      </g></svg><div class="plabel">4 L / jour</div></div></div>
+    <div class="prop slotL2 t6 anim"><div class="inner"><svg viewBox="0 0 160 140">
+      <g stroke="#26201a" stroke-width="5" stroke-linejoin="round" fill="#e0c06a">
+        <rect x="55" y="20" width="50" height="26"/><rect x="30" y="52" width="50" height="26"/><rect x="82" y="52" width="50" height="26"/>
+        <rect x="12" y="84" width="46" height="26"/><rect x="60" y="84" width="46" height="26"/><rect x="108" y="84" width="42" height="26"/>
+      </g>
+      <text x="80" y="134" text-anchor="middle" font-family="Bangers" font-size="26" fill="#c0492f">2,3 millions</text>
+    </svg></div></div>
 
-    <div class="prop slotL t3 anim"><div class="inner"><svg viewBox="0 0 170 150">
-      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round">
-        <rect x="30" y="20" width="110" height="110" fill="#f3ead0"/>
-        <ellipse cx="30" cy="75" rx="12" ry="55" fill="#e7d9ad"/><ellipse cx="140" cy="75" rx="12" ry="55" fill="#e7d9ad"/>
-        <g stroke="#9a7d3a" stroke-width="4"><line x1="48" y1="45" x2="122" y2="45"/><line x1="48" y1="63" x2="122" y2="63"/><line x1="48" y1="81" x2="112" y2="81"/><line x1="48" y1="99" x2="122" y2="99"/></g>
-      </g></svg><div class="plabel">papyrus</div></div></div>
-    <div class="prop slotR t3 anim"><div class="inner"><svg viewBox="0 0 160 160">
-      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round">
+    <!-- SEG3 avance -->
+    <div class="prop slotR t7 anim"><div class="inner"><svg viewBox="0 0 160 160">
+      <g stroke="#26201a" stroke-width="7" stroke-linejoin="round">
         <rect x="20" y="24" width="120" height="118" rx="10" fill="#fff8ec"/>
         <rect x="20" y="24" width="120" height="30" rx="10" fill="#c0492f"/>
         <line x1="50" y1="14" x2="50" y2="40"/><line x1="110" y1="14" x2="110" y2="40"/>
       </g>
-      <text x="80" y="116" text-anchor="middle" font-family="Anton" font-size="52" fill="#2b2016">365</text>
+      <text x="80" y="118" text-anchor="middle" font-family="Bangers" font-size="52" fill="#26201a">365</text>
     </svg><div class="plabel">calendrier</div></div></div>
-    <div class="prop slotL2 t3 anim"><div class="inner"><svg viewBox="0 0 160 130">
-      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round">
-        <path d="M40 40 q10 -22 30 -12 q20 -10 30 12 q6 40 -14 66 q-8 8 -16 -12 q-8 20 -16 12 q-20 -26 -14 -66 Z" fill="#fff"/>
-        <rect x="96" y="16" width="14" height="70" rx="6" fill="#2b5fa5" transform="rotate(38 103 51)"/>
-        <rect x="120" y="8" width="30" height="16" rx="6" fill="#7ec7f0" transform="rotate(38 135 16)"/>
-      </g>
-      <path d="M58 30 l6 10 l11 -6" stroke="#e8b53a" stroke-width="5" fill="none"/>
-    </svg><div class="plabel">dentifrice</div></div></div>
+    <div class="prop slotL t8 anim"><div class="inner"><svg viewBox="0 0 170 150">
+      <g stroke="#26201a" stroke-width="7" stroke-linejoin="round">
+        <rect x="30" y="20" width="110" height="110" fill="#f3ead0"/>
+        <ellipse cx="30" cy="75" rx="12" ry="55" fill="#e7d9ad"/><ellipse cx="140" cy="75" rx="12" ry="55" fill="#e7d9ad"/>
+        <g stroke="#9a7d3a" stroke-width="4"><line x1="48" y1="45" x2="122" y2="45"/><line x1="48" y1="63" x2="122" y2="63"/><line x1="48" y1="81" x2="112" y2="81"/><line x1="48" y1="99" x2="122" y2="99"/></g>
+      </g></svg><div class="plabel">papyrus &amp; encre</div></div></div>
+    <div class="prop slotR t9 anim"><div class="inner"><svg viewBox="0 0 170 140">
+      <g stroke="#26201a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" fill="none">
+        <rect x="20" y="30" width="130" height="80" rx="14" fill="#fff8ec"/>
+        <path d="M28 72 h26 l10 -26 l14 52 l12 -34 l8 16 h40" stroke="#c0492f" stroke-width="6"/>
+      </g></svg><div class="plabel">le pouls</div></div></div>
 
-    <div class="prop slotL t4 anim"><div class="inner"><svg viewBox="0 0 150 210">
-      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M45 60 Q75 6 105 60 Z" fill="#e8b53a"/><rect x="66" y="18" width="18" height="40" rx="8" fill="#c0492f"/>
-        <path d="M52 58 L45 130 L105 130 L98 58 Q75 74 52 58 Z" fill="#d9a86b"/>
-        <circle cx="66" cy="90" r="4" fill="#2b2016" stroke="none"/><circle cx="86" cy="90" r="4" fill="#2b2016" stroke="none"/>
-        <path d="M66 104 q9 6 18 0" fill="none" stroke-width="4"/>
-        <rect x="60" y="130" width="30" height="16" fill="#2b5fa5"/><path d="M55 146 L50 200 L100 200 L95 146 Z" fill="#f3ead0"/>
-      </g></svg><div class="plabel">Ramsès II · 90 ans</div></div></div>
-    <div class="prop slotR t4 anim"><div class="inner"><svg viewBox="0 0 220 200">
-      <g stroke="#2b2016" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-        <g fill="#d9a86b"><circle cx="40" cy="120" r="15"/><path d="M28 134 l-3 44 l30 0 l-3 -44 Z" fill="#c0492f"/></g>
-        <g fill="#d9a86b"><circle cx="80" cy="108" r="17"/><path d="M66 124 l-3 54 l34 0 l-3 -54 Z" fill="#2aa198"/></g>
-        <g fill="#d9a86b"><circle cx="124" cy="112" r="16"/><path d="M110 128 l-3 50 l32 0 l-3 -50 Z" fill="#e8b53a"/></g>
-        <g fill="#d9a86b"><circle cx="164" cy="122" r="14"/><path d="M152 136 l-3 42 l28 0 l-3 -42 Z" fill="#8a5ac0"/></g>
-      </g>
-      <text x="150" y="58" text-anchor="middle" font-family="Anton" font-size="54" fill="#c0492f" stroke="#2b2016" stroke-width="1.5">100+</text>
-    </svg><div class="plabel">enfants</div></div></div>
-
-    <div class="prop slotR t5 anim"><div class="inner"><svg viewBox="0 0 190 210">
-      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M60 40 L48 4 L86 32 Z" fill="#2b2016"/><path d="M130 40 L142 4 L104 32 Z" fill="#2b2016"/>
-        <path d="M40 120 Q40 40 95 40 Q150 40 150 120 Q150 190 95 190 Q40 190 40 120 Z" fill="#2b2016"/>
-        <path d="M150 150 q34 6 22 -40 q-10 26 -22 20" fill="#2b2016"/>
-        <g stroke="none"><ellipse cx="76" cy="96" rx="8" ry="12" fill="#e8b53a"/><ellipse cx="114" cy="96" rx="8" ry="12" fill="#e8b53a"/>
-          <ellipse cx="76" cy="98" rx="3" ry="9" fill="#2b2016"/><ellipse cx="114" cy="98" rx="3" ry="9" fill="#2b2016"/></g>
+    <!-- SEG4 chats -->
+    <div class="prop slotR t10 anim"><div class="inner"><svg viewBox="0 0 190 210">
+      <g stroke="#26201a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M60 40 L48 4 L86 32 Z" fill="#26201a"/><path d="M130 40 L142 4 L104 32 Z" fill="#26201a"/>
+        <path d="M40 120 Q40 40 95 40 Q150 40 150 120 Q150 190 95 190 Q40 190 40 120 Z" fill="#26201a"/>
+        <path d="M150 150 q34 6 22 -40 q-10 26 -22 20" fill="#26201a"/>
+        <g stroke="none"><ellipse cx="76" cy="96" rx="9" ry="13" fill="#f2b632"/><ellipse cx="114" cy="96" rx="9" ry="13" fill="#f2b632"/>
+          <ellipse cx="76" cy="98" rx="3.5" ry="10" fill="#26201a"/><ellipse cx="114" cy="98" rx="3.5" ry="10" fill="#26201a"/></g>
         <path d="M95 112 l-6 8 l12 0 Z" fill="#e6a5a0" stroke-width="3"/>
         <path d="M95 120 l0 8 M95 128 q-10 4 -16 -2 M95 128 q10 4 16 -2" fill="none" stroke-width="3"/>
         <path d="M60 118 l-30 -6 M60 128 l-30 4 M130 118 l30 -6 M130 128 l30 4" stroke-width="3"/>
-        <path d="M60 150 Q95 178 130 150 L130 172 Q95 190 60 172 Z" fill="#e8b53a"/>
-      </g></svg><div class="plabel">chats sacrés</div></div></div>
-    <div class="prop slotL2 t5 anim"><div class="inner"><svg viewBox="0 0 130 130">
-      <circle cx="65" cy="65" r="52" fill="#fff" stroke="#c0492f" stroke-width="12"/>
-      <line x1="30" y1="30" x2="100" y2="100" stroke="#c0492f" stroke-width="12"/>
-      <text x="65" y="82" text-anchor="middle" font-size="46">☠️</text>
-    </svg><div class="plabel">peine de mort</div></div></div>
+        <path d="M60 150 Q95 178 130 150 L130 172 Q95 190 60 172 Z" fill="#f2b632"/>
+      </g></svg><div class="plabel">Bastet</div></div></div>
+    <div class="prop slotL t11 anim"><div class="inner"><svg viewBox="0 0 170 190">
+      <g stroke="#26201a" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+        <ellipse cx="80" cy="95" rx="55" ry="70" fill="#e0a45c"/>
+        <path d="M50 70 l24 4 M120 70 l-24 4"/>
+        <ellipse cx="62" cy="92" rx="4" ry="5" fill="#26201a" stroke="none"/><ellipse cx="98" cy="92" rx="4" ry="5" fill="#26201a" stroke="none"/>
+        <path d="M60 118 q-14 -8 -22 -2" fill="none"/>
+        <path d="M120 150 l30 -18 M150 132 l-6 -12 -14 6 Z" fill="#bbbbbb"/>
+      </g></svg><div class="plabel">rasés de deuil</div></div></div>
+    <div class="prop slotL2 t12 anim"><div class="inner"><svg viewBox="0 0 150 160">
+      <g stroke="#26201a" stroke-width="6" stroke-linejoin="round">
+        <path d="M75 10 Q135 22 130 90 Q126 130 75 152 Q24 130 20 90 Q15 22 75 10 Z" fill="#b23b2c"/>
+        <path d="M55 55 q10 -12 22 0 q12 -12 22 0 q4 22 -22 40 q-26 -18 -22 -40 Z" fill="#f2b632" stroke-width="4"/>
+        <ellipse cx="66" cy="62" rx="2.5" ry="3.5" fill="#26201a" stroke="none"/><ellipse cx="88" cy="62" rx="2.5" ry="3.5" fill="#26201a" stroke="none"/>
+      </g></svg><div class="plabel">bouclier perse</div></div></div>
 
-    <div class="prop slotL t6 anim"><div class="inner"><svg viewBox="0 0 150 150">
-      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round" fill="#e8b53a">
+    <!-- OUTRO -->
+    <div class="prop slotL t13 anim"><div class="inner"><svg viewBox="0 0 150 150">
+      <g stroke="#26201a" stroke-width="7" stroke-linejoin="round" fill="#f2b632">
         <path d="M75 20 Q115 20 110 80 Q108 100 125 112 L25 112 Q42 100 40 80 Q35 20 75 20 Z"/>
         <circle cx="75" cy="128" r="12"/><rect x="70" y="8" width="10" height="14" rx="4"/>
       </g></svg></div></div>
-    <div class="prop slotR t6 anim"><div class="inner">
-      <div style="background:#c0492f;color:#fff;border:5px solid #2b2016;border-radius:14px;padding:2vh 3vw;font-family:'Anton';font-size:5.4vw;text-transform:uppercase;text-align:center;box-shadow:0 7px 0 #2b2016;">S'abonner</div>
+    <div class="prop slotR t13 anim"><div class="inner">
+      <div style="background:#c0492f;color:#fff;border:6px solid #26201a;border-radius:16px;padding:2vh 3vw;font-family:'Permanent Marker';font-size:5.6vw;text-align:center;box-shadow:.8vh .8vh 0 #26201a;transform:rotate(-2deg);">S'abonner</div>
     </div></div>
 
     <!-- ================= PHARAON ================= -->
     <svg class="pharaoh" viewBox="0 0 300 520" aria-hidden="true">
-      <ellipse cx="150" cy="508" rx="78" ry="13" fill="rgba(90,60,10,.18)"/>
+      <ellipse cx="150" cy="508" rx="80" ry="13" fill="rgba(70,45,5,.18)"/>
       <g id="react" class="anim"><g id="sway" class="anim"><g id="bob" class="anim">
-        <g id="char" stroke="#2b2016" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
-          <path d="M104 128 Q150 54 196 128 Z" fill="#e8b53a"/>
-          <path d="M112 118 L88 262 L128 262 L130 150 Z" fill="#e8b53a"/>
-          <path d="M188 118 L212 262 L172 262 L170 150 Z" fill="#e8b53a"/>
-          <g stroke="#2b5fa5" stroke-width="3">
-            <line x1="116" y1="150" x2="126" y2="150"/><line x1="112" y1="180" x2="125" y2="180"/>
-            <line x1="107" y1="210" x2="123" y2="210"/><line x1="102" y1="240" x2="122" y2="240"/>
-            <line x1="184" y1="150" x2="174" y2="150"/><line x1="188" y1="180" x2="175" y2="180"/>
-            <line x1="193" y1="210" x2="177" y2="210"/><line x1="198" y1="240" x2="178" y2="240"/>
-            <line x1="120" y1="96" x2="180" y2="96"/>
+        <g id="char" stroke="#26201a" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M102 128 Q150 50 198 128 Z" fill="#f2b632"/>
+          <path d="M110 116 L86 264 L130 264 L131 150 Z" fill="#f2b632"/>
+          <path d="M190 116 L214 264 L170 264 L169 150 Z" fill="#f2b632"/>
+          <g stroke="#2f6fb0" stroke-width="4">
+            <line x1="114" y1="152" x2="127" y2="152"/><line x1="110" y1="184" x2="126" y2="184"/>
+            <line x1="104" y1="216" x2="124" y2="216"/><line x1="99" y1="248" x2="122" y2="248"/>
+            <line x1="186" y1="152" x2="173" y2="152"/><line x1="190" y1="184" x2="174" y2="184"/>
+            <line x1="196" y1="216" x2="176" y2="216"/><line x1="201" y1="248" x2="178" y2="248"/>
+            <line x1="118" y1="94" x2="182" y2="94"/>
           </g>
-          <path d="M108 120 Q150 100 192 120 L188 134 Q150 116 112 134 Z" fill="#2b5fa5"/>
+          <path d="M106 120 Q150 98 194 120 L189 136 Q150 114 111 136 Z" fill="#2f6fb0"/>
+          <path d="M113 122 Q150 110 187 122 L185 196 Q150 220 115 196 Z" fill="#e0a45c"/>
+          <path d="M150 116 q-9 -11 0 -20 q9 7 0 16" fill="#2f9d6a" stroke-width="4"/>
+          <circle cx="150" cy="97" r="4" fill="#c0492f" stroke-width="3"/>
+
+          <!-- gros yeux funky -->
+          <g id="brows" class="anim" stroke-width="5">
+            <path d="M120 132 q11 -7 22 -2" fill="none"/><path d="M180 132 q-11 -7 -22 -2" fill="none"/>
+          </g>
+          <g><ellipse cx="132" cy="150" rx="12" ry="14" fill="#fff"/><ellipse cx="168" cy="150" rx="12" ry="14" fill="#fff"/></g>
+          <g id="pupils" class="anim" stroke="none" fill="#26201a">
+            <ellipse cx="134" cy="152" rx="5.5" ry="7"/><ellipse cx="170" cy="152" rx="5.5" ry="7"/>
+          </g>
+          <g id="eyelids" class="anim" stroke="none" fill="#e0a45c">
+            <rect x="119" y="134" width="26" height="32"/><rect x="155" y="134" width="26" height="32"/>
+          </g>
+          <path d="M150 158 q-5 9 -1 15 q3 2 6 0" fill="none" stroke-width="4"/>
+
+          <!-- grande bouche -->
+          <g id="mouthGrp">
+            <path d="M128 175 Q150 171 172 175" fill="none" stroke-width="5"/>
+            <g id="mouthMove" class="anim">
+              <path d="M129 176 Q150 174 171 176 Q150 206 129 176 Z" fill="#7a2a1e" stroke="none"/>
+              <ellipse cx="150" cy="197" rx="10" ry="4" fill="#d46a5a" stroke="none"/>
+            </g>
+            <rect x="134" y="175" width="32" height="5" rx="2" fill="#fff" stroke="none"/>
+          </g>
+
+          <path d="M141 214 L138 268 Q150 282 162 268 L159 214 Q150 220 141 214 Z" fill="#2f6fb0"/>
+          <g stroke="#1c3f73" stroke-width="3"><line x1="140" y1="230" x2="160" y2="230"/><line x1="139" y1="246" x2="161" y2="246"/><line x1="139" y1="262" x2="161" y2="262"/></g>
 
           <g id="breathe" class="anim">
-            <rect x="138" y="196" width="24" height="20" fill="#d9a86b"/>
-            <path d="M120 262 Q150 250 180 262 L176 356 L124 356 Z" fill="#d9a86b"/>
+            <rect x="137" y="200" width="26" height="22" fill="#e0a45c"/>
+            <path d="M118 266 Q150 254 182 266 L178 360 L122 360 Z" fill="#e0a45c"/>
           </g>
+          <path d="M130 356 L126 434 L146 434 L148 356 Z" fill="#e0a45c"/>
+          <path d="M152 356 L154 434 L174 434 L170 356 Z" fill="#e0a45c"/>
+          <path d="M122 434 q-6 9 7 11 l17 0 0 -11 Z" fill="#cf9a52"/>
+          <path d="M178 434 q6 9 -7 11 l-17 0 0 -11 Z" fill="#cf9a52"/>
+          <path d="M114 334 L186 334 L194 376 L106 376 Z" fill="#f3ead0"/>
+          <g stroke="#c9bd94" stroke-width="3"><line x1="130" y1="336" x2="126" y2="374"/><line x1="150" y1="336" x2="150" y2="375"/><line x1="170" y1="336" x2="174" y2="374"/></g>
+          <rect x="110" y="330" width="80" height="13" fill="#f2b632"/>
+          <path d="M112 268 Q150 306 188 268 Q150 292 112 268 Z" fill="#f2b632"/>
+          <path d="M118 274 Q150 304 182 274" fill="none" stroke="#2aa198" stroke-width="6"/>
+          <path d="M124 280 Q150 304 176 280" fill="none" stroke="#c0492f" stroke-width="5"/>
 
-          <path d="M132 352 L128 430 L146 430 L148 352 Z" fill="#d9a86b"/>
-          <path d="M152 352 L154 430 L172 430 L168 352 Z" fill="#d9a86b"/>
-          <path d="M124 430 q-6 8 6 10 l16 0 0 -10 Z" fill="#c99a5c"/>
-          <path d="M176 430 q6 8 -6 10 l-16 0 0 -10 Z" fill="#c99a5c"/>
-          <path d="M116 330 L184 330 L192 372 L108 372 Z" fill="#f3ead0"/>
-          <g stroke="#c9bd94" stroke-width="2.5"><line x1="130" y1="332" x2="126" y2="370"/><line x1="145" y1="332" x2="144" y2="371"/><line x1="160" y1="332" x2="162" y2="370"/><line x1="174" y1="332" x2="178" y2="370"/></g>
-          <rect x="112" y="326" width="76" height="12" fill="#e8b53a"/>
-          <path d="M143 338 L157 338 L153 380 L147 380 Z" fill="#e8b53a"/>
-          <path d="M112 264 Q150 300 188 264 Q150 288 112 264 Z" fill="#e8b53a"/>
-          <path d="M118 270 Q150 300 182 270" fill="none" stroke="#2aa198" stroke-width="5"/>
-          <path d="M124 276 Q150 300 176 276" fill="none" stroke="#c0492f" stroke-width="4"/>
-
-          <!-- visage -->
-          <path d="M116 122 Q150 112 184 122 L182 190 Q150 214 118 190 Z" fill="#d9a86b"/>
-          <path d="M150 116 q-8 -10 0 -18 q8 6 0 14" fill="#3aa06a" stroke-width="3"/>
-          <circle cx="150" cy="99" r="3.4" fill="#c0492f" stroke-width="2.5"/>
-          <g id="eyes" class="anim">
-            <g stroke-width="0" fill="#2b2016"><ellipse cx="133" cy="150" rx="5.5" ry="6.5"/><ellipse cx="167" cy="150" rx="5.5" ry="6.5"/></g>
-            <path d="M138 150 q9 -1 15 4" fill="none" stroke-width="3"/><path d="M162 150 q-9 -1 -15 4" fill="none" stroke-width="3"/>
-          </g>
-          <g id="brows" class="anim">
-            <path d="M124 140 q9 -5 18 -1" fill="none" stroke-width="3.5"/><path d="M176 140 q-9 -5 -18 -1" fill="none" stroke-width="3.5"/>
-          </g>
-          <path d="M150 156 q-4 10 -1 16 q3 2 6 0" fill="none" stroke-width="3"/>
-
-          <!-- bouche animée -->
-          <g id="mouthGrp">
-            <path d="M132 178 Q150 174 168 178" fill="none" stroke-width="3"/>
-            <g id="mouthMove" class="anim">
-              <path d="M133 179 Q150 178 167 179 Q150 203 133 179 Z" fill="#7a2a1e" stroke="none"/>
-              <ellipse cx="150" cy="196" rx="8" ry="3.5" fill="#d46a5a" stroke="none"/>
-            </g>
-            <rect x="137" y="178" width="26" height="4" rx="2" fill="#fff" stroke="none"/>
-          </g>
-
-          <!-- barbe -->
-          <path d="M141 208 L138 262 Q150 274 162 262 L159 208 Q150 214 141 208 Z" fill="#2b5fa5"/>
-          <g stroke="#1c3f73" stroke-width="2.5"><line x1="140" y1="222" x2="160" y2="222"/><line x1="139" y1="236" x2="161" y2="236"/><line x1="139" y1="250" x2="161" y2="250"/></g>
-
-          <!-- bras -->
-          <path d="M124 268 Q104 300 100 340" fill="none" stroke-width="9"/>
-          <g stroke-width="3.5"><circle cx="97" cy="352" r="7" fill="none"/><line x1="97" y1="359" x2="97" y2="378"/><line x1="88" y1="366" x2="106" y2="366"/></g>
+          <path d="M122 272 Q100 304 96 344" fill="none" stroke-width="10"/>
+          <g stroke-width="4"><circle cx="93" cy="356" r="8" fill="none"/><line x1="93" y1="364" x2="93" y2="384"/><line x1="83" y1="371" x2="103" y2="371"/></g>
           <g id="armPoint" class="anim">
-            <path d="M178 266 Q206 250 214 214" fill="none" stroke-width="9"/>
-            <circle cx="214" cy="206" r="8" fill="#d9a86b"/>
-            <line x1="214" y1="200" x2="214" y2="184" stroke-width="6"/>
+            <path d="M180 270 Q210 252 218 214" fill="none" stroke-width="10"/>
+            <circle cx="218" cy="206" r="9" fill="#e0a45c"/>
+            <line x1="218" y1="200" x2="218" y2="182" stroke-width="7"/>
           </g>
         </g>
       </g></g></g>
@@ -367,44 +400,26 @@
   </div>
 
   <script>
-    // ---- Poussière dorée (déterministe : position = f(temps)) ----
     const cv = document.getElementById('dust'), cx = cv.getContext('2d');
     let W = cv.width = 1080, H = cv.height = 1920, parts = [];
-    for (let i=0;i<70;i++) parts.push({
-      x0:Math.random()*W, y0:Math.random()*H, r:Math.random()*3+1,
-      vy:(Math.random()*24+9), vx:(Math.random()-0.5)*18,       // px / seconde
-      a:Math.random()*0.5+0.2, phase:Math.random()*Math.PI*2
-    });
+    for (let i=0;i<64;i++) parts.push({ x0:Math.random()*W, y0:Math.random()*H, r:Math.random()*3+1,
+      vy:(Math.random()*22+8), vx:(Math.random()-0.5)*16, a:Math.random()*0.5+0.2, phase:Math.random()*6.28 });
     const wrap=(v,m)=>((v%m)+m)%m;
-    function drawDust(t){                                        // t en secondes
-      cx.clearRect(0,0,W,H);
-      for(const p of parts){
-        const y=wrap(p.y0 - p.vy*t, H+10), x=wrap(p.x0 + p.vx*t, W+10);
-        const a=p.a*(0.6+0.4*Math.sin(p.phase + t*2));
-        cx.beginPath(); cx.arc(x,y,p.r,0,7); cx.fillStyle='rgba(255,225,140,'+a+')'; cx.fill();
-      }
-    }
-
+    function drawDust(t){ cx.clearRect(0,0,W,H);
+      for(const p of parts){ const y=wrap(p.y0-p.vy*t,H+10), x=wrap(p.x0+p.vx*t,W+10);
+        const a=p.a*(0.6+0.4*Math.sin(p.phase+t*2)); cx.beginPath(); cx.arc(x,y,p.r,0,7);
+        cx.fillStyle='rgba(255,228,150,'+a+')'; cx.fill(); } }
     const FRAMES = new URLSearchParams(location.search).has('frames');
     const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
-
     if (FRAMES) {
-      // Rendu déterministe : horloge pilotée frame par frame
-      fontsReady.then(()=>{
-        document.body.classList.add('go');
-        const anims = document.getAnimations();
-        anims.forEach(a=>a.pause());
+      fontsReady.then(()=>{ document.body.classList.add('go');
+        const anims = document.getAnimations(); anims.forEach(a=>a.pause());
         window.__seek = (ms)=>{ anims.forEach(a=>{ a.currentTime = ms; }); drawDust(ms/1000); };
-        window.__seek(0);
-        window.__ready = true;
-      });
+        window.__seek(0); window.__ready = true; });
     } else {
-      // Lecture temps réel (visionnage interactif)
-      fontsReady.then(()=> requestAnimationFrame((t0)=>{
-        document.body.classList.add('go');
+      fontsReady.then(()=> requestAnimationFrame(()=>{ document.body.classList.add('go');
         const start=performance.now();
-        (function loop(now){ drawDust((now-start)/1000); requestAnimationFrame(loop); })(start);
-      }));
+        (function loop(now){ drawDust((now-start)/1000); requestAnimationFrame(loop); })(start); }));
     }
   </script>
 </body>
