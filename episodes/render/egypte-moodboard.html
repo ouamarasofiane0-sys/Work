@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="fonts.css" />
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:100%; height:100%; }
+  #board { position:relative; width:100vw; height:100vh; overflow:hidden;
+    background:#ece4d3; font-family:'Patrick Hand',sans-serif; }
+  #board::before{ content:""; position:absolute; inset:0;
+    background-image:radial-gradient(rgba(120,95,50,.10) 1.5px, transparent 1.5px);
+    background-size:22px 22px; }
+  .ink { filter:url(#wob); }
+
+  .tile { position:absolute; border:5px solid #26201a; border-radius:18px;
+    box-shadow:7px 8px 0 rgba(38,32,26,.18); overflow:hidden; }
+  .cap { position:absolute; top:10px; left:16px; font-family:'Permanent Marker'; font-size:22px; z-index:3; }
+  .cap.light{ color:#fff; } .cap.dark{ color:#26201a; }
+  .ctr { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+  .ctr svg { width:auto; display:block; overflow:visible; }
+
+  /* header */
+  #hd { left:36px; top:36px; width:1128px; height:150px; background:#26201a; transform:rotate(-.6deg);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
+  #hd h1 { font-family:'Permanent Marker'; color:#fff; font-size:60px; letter-spacing:1px; }
+  #hd h1 span{ color:#f2b632; }
+  #hd p { font-family:'Patrick Hand'; color:#e9dcc0; font-size:30px; }
+
+  .chips { position:absolute; z-index:3; display:flex; flex-wrap:wrap; gap:10px; }
+  .chip { font-family:'Permanent Marker'; font-size:20px; color:#fff; background:#c0492f;
+    padding:4px 16px; border-radius:14px; border:3px solid #26201a; }
+
+  /* palette */
+  .sw { display:flex; align-items:center; gap:10px; margin:3px 0; }
+  .swatch { width:46px; height:32px; border:4px solid #26201a; border-radius:8px; }
+  .swtx b{ font-family:'Permanent Marker'; font-size:19px; color:#26201a; }
+  .swtx small{ display:block; font-family:'Patrick Hand'; font-size:17px; color:#5a4a2e; }
+
+  /* typo */
+  .typo div{ margin:2px 0; }
+  .typo .lab{ font-family:'Patrick Hand'; font-size:18px; color:#8a6a2e; }
+  .t1{ font-family:'Permanent Marker'; font-size:52px; color:#c0492f; line-height:1; }
+  .t2{ font-family:'Patrick Hand'; font-size:34px; color:#26201a; }
+  .t3{ font-family:'Bangers'; font-size:46px; color:#2f6fb0; letter-spacing:2px; }
+
+  .tone{ position:absolute; inset:0; padding:44px 22px 18px; display:flex; flex-wrap:wrap;
+    gap:10px 12px; align-content:center; justify-content:center; }
+  .tone span{ font-family:'Permanent Marker'; font-size:26px; color:#f4dc80; }
+  .tone .dot{ color:#c0492f; }
+
+  .note{ position:absolute; left:16px; right:16px; bottom:16px; font-family:'Patrick Hand';
+    font-size:20px; color:#3f3222; }
+</style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute"><defs>
+    <filter id="wob" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs></svg>
+
+  <div id="board">
+
+    <div id="hd">
+      <h1>1 Minute d'Histoire — <span>DA</span></h1>
+      <p>Direction artistique · style « doodle funky », dessiné à la main</p>
+    </div>
+
+    <!-- PHARAON (bleu) -->
+    <div class="tile" style="left:36px; top:210px; width:540px; height:560px; background:#3f9fd6; transform:rotate(-1deg);">
+      <span class="cap light">Le héros</span>
+      <div class="ctr"><svg class="ink" viewBox="0 0 300 470">
+        <g stroke="#26201a" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" transform="translate(0,-40)">
+          <path d="M102 128 Q150 50 198 128 Z" fill="#f2b632"/>
+          <path d="M110 116 L86 264 L130 264 L131 150 Z" fill="#f2b632"/>
+          <path d="M190 116 L214 264 L170 264 L169 150 Z" fill="#f2b632"/>
+          <g stroke="#2f6fb0" stroke-width="4">
+            <line x1="114" y1="152" x2="127" y2="152"/><line x1="110" y1="184" x2="126" y2="184"/>
+            <line x1="104" y1="216" x2="124" y2="216"/><line x1="186" y1="152" x2="173" y2="152"/>
+            <line x1="190" y1="184" x2="174" y2="184"/><line x1="196" y1="216" x2="176" y2="216"/>
+            <line x1="118" y1="94" x2="182" y2="94"/></g>
+          <path d="M106 120 Q150 98 194 120 L189 136 Q150 114 111 136 Z" fill="#2f6fb0"/>
+          <path d="M113 122 Q150 110 187 122 L185 196 Q150 220 115 196 Z" fill="#e0a45c"/>
+          <path d="M150 116 q-9 -11 0 -20 q9 7 0 16" fill="#2f9d6a" stroke-width="4"/>
+          <circle cx="150" cy="97" r="4" fill="#c0492f" stroke-width="3"/>
+          <g stroke-width="5"><path d="M120 132 q11 -7 22 -2" fill="none"/><path d="M180 132 q-11 -7 -22 -2" fill="none"/></g>
+          <g><ellipse cx="132" cy="150" rx="12" ry="14" fill="#fff"/><ellipse cx="168" cy="150" rx="12" ry="14" fill="#fff"/></g>
+          <g stroke="none" fill="#26201a"><ellipse cx="135" cy="151" rx="5.5" ry="7"/><ellipse cx="171" cy="151" rx="5.5" ry="7"/></g>
+          <path d="M150 158 q-5 9 -1 15 q3 2 6 0" fill="none" stroke-width="4"/>
+          <path d="M126 174 Q150 170 174 174" fill="none" stroke-width="5"/>
+          <path d="M129 176 Q150 174 171 176 Q150 210 129 176 Z" fill="#7a2a1e" stroke="none"/>
+          <ellipse cx="150" cy="198" rx="11" ry="5" fill="#d46a5a" stroke="none"/>
+          <rect x="134" y="175" width="32" height="5" rx="2" fill="#fff" stroke="none"/>
+          <path d="M141 214 L138 268 Q150 282 162 268 L159 214 Q150 220 141 214 Z" fill="#2f6fb0"/>
+          <g stroke="#1c3f73" stroke-width="3"><line x1="140" y1="230" x2="160" y2="230"/><line x1="139" y1="246" x2="161" y2="246"/><line x1="139" y1="262" x2="161" y2="262"/></g>
+          <rect x="137" y="200" width="26" height="22" fill="#e0a45c"/>
+          <path d="M118 266 Q150 254 182 266 L178 360 L122 360 Z" fill="#e0a45c"/>
+          <path d="M130 356 L126 420 L146 420 L148 356 Z" fill="#e0a45c"/><path d="M152 356 L154 420 L174 420 L170 356 Z" fill="#e0a45c"/>
+          <path d="M114 334 L186 334 L194 376 L106 376 Z" fill="#f3ead0"/>
+          <rect x="110" y="330" width="80" height="13" fill="#f2b632"/>
+          <path d="M112 268 Q150 306 188 268 Q150 292 112 268 Z" fill="#f2b632"/>
+          <path d="M118 274 Q150 304 182 274" fill="none" stroke="#2aa198" stroke-width="6"/>
+          <path d="M124 280 Q150 304 176 280" fill="none" stroke="#c0492f" stroke-width="5"/>
+          <path d="M180 270 Q210 252 214 216" fill="none" stroke-width="10"/>
+          <circle cx="214" cy="208" r="9" fill="#e0a45c"/><line x1="214" y1="202" x2="214" y2="184" stroke-width="7"/>
+          <path d="M122 272 Q98 250 108 216" fill="none" stroke-width="10"/><circle cx="108" cy="208" r="9" fill="#e0a45c"/>
+        </g></svg></div>
+    </div>
+
+    <!-- CLÉOPÂTRE (rose) -->
+    <div class="tile" style="left:600px; top:210px; width:564px; height:360px; background:#ec7a97; transform:rotate(1deg);">
+      <span class="cap light">Second rôle</span>
+      <div class="ctr"><svg class="ink" viewBox="0 0 160 200">
+        <g stroke="#26201a" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M40 70 Q40 26 80 26 Q120 26 120 70 L124 120 Q80 138 36 120 Z" fill="#26201a"/>
+          <path d="M52 66 Q80 44 108 66 L108 108 Q80 124 52 108 Z" fill="#e0a45c"/>
+          <rect x="52" y="52" width="56" height="12" fill="#f2b632"/><ellipse cx="80" cy="46" rx="7" ry="7" fill="#2f9d6a"/>
+          <ellipse cx="68" cy="86" rx="4" ry="5" fill="#26201a" stroke="none"/><ellipse cx="92" cy="86" rx="4" ry="5" fill="#26201a" stroke="none"/>
+          <path d="M60 84 l-10 2 M100 84 l10 2"/><path d="M72 102 q8 5 16 0" fill="none"/>
+          <path d="M60 138 Q80 150 100 138 L104 190 Q80 200 56 190 Z" fill="#7a4bd0"/>
+          <path d="M70 140 Q80 150 90 140" fill="#e8b53a" stroke-width="4"/>
+        </g></svg></div>
+    </div>
+
+    <!-- PALETTE -->
+    <div class="tile" style="left:600px; top:588px; width:564px; height:206px; background:#f3ead0; transform:rotate(-.8deg); padding:40px 20px 12px 22px;">
+      <span class="cap dark">Palette</span>
+      <div style="display:flex; gap:18px 26px; flex-wrap:wrap;">
+        <div class="sw"><div class="swatch" style="background:#f4dc80"></div><div class="swtx"><b>Sable</b><small>#f4dc80</small></div></div>
+        <div class="sw"><div class="swatch" style="background:#c0492f"></div><div class="swtx"><b>Brique</b><small>#c0492f</small></div></div>
+        <div class="sw"><div class="swatch" style="background:#2f6fb0"></div><div class="swtx"><b>Bleu</b><small>#2f6fb0</small></div></div>
+        <div class="sw"><div class="swatch" style="background:#f2b632"></div><div class="swtx"><b>Or</b><small>#f2b632</small></div></div>
+        <div class="sw"><div class="swatch" style="background:#2aa198"></div><div class="swtx"><b>Teal</b><small>#2aa198</small></div></div>
+        <div class="sw"><div class="swatch" style="background:#26201a"></div><div class="swtx"><b>Encre</b><small>#26201a</small></div></div>
+      </div>
+    </div>
+
+    <!-- TYPO -->
+    <div class="tile typo" style="left:36px; top:800px; width:720px; height:300px; background:#f3ead0; transform:rotate(.7deg); padding:44px 26px 18px;">
+      <span class="cap dark">Typographie</span>
+      <div><div class="lab">Titres — Permanent Marker</div><div class="t1">L'ÉGYPTE ANTIQUE</div></div>
+      <div><div class="lab">Texte — Patrick Hand</div><div class="t2">Des récits fous, racontés en 1 minute.</div></div>
+      <div><div class="lab">Chiffres chocs — Bangers</div><div class="t3">365 · 100+ · 2,5 TONNES</div></div>
+    </div>
+
+    <!-- OBJETS (teal) -->
+    <div class="tile" style="left:780px; top:800px; width:384px; height:300px; background:#3bb3a6; transform:rotate(-1deg);">
+      <span class="cap light">Objets</span>
+      <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:space-around; padding:38px 14px 14px;">
+        <svg class="ink" viewBox="0 0 120 160" style="width:64px">
+          <g stroke="#26201a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="#f2b632">
+            <circle cx="60" cy="40" r="24" fill="none"/><line x1="60" y1="64" x2="60" y2="140"/><line x1="30" y1="88" x2="90" y2="88"/></g></svg>
+        <svg class="ink" viewBox="0 0 190 210" style="width:120px">
+          <g stroke="#26201a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M60 40 L48 4 L86 32 Z" fill="#26201a"/><path d="M130 40 L142 4 L104 32 Z" fill="#26201a"/>
+            <path d="M40 120 Q40 40 95 40 Q150 40 150 120 Q150 190 95 190 Q40 190 40 120 Z" fill="#26201a"/>
+            <path d="M150 150 q34 6 22 -40 q-10 26 -22 20" fill="#26201a"/>
+            <g stroke="none"><ellipse cx="76" cy="96" rx="9" ry="13" fill="#f2b632"/><ellipse cx="114" cy="96" rx="9" ry="13" fill="#f2b632"/>
+              <ellipse cx="76" cy="98" rx="3.5" ry="10" fill="#26201a"/><ellipse cx="114" cy="98" rx="3.5" ry="10" fill="#26201a"/></g>
+            <path d="M95 112 l-6 8 l12 0 Z" fill="#e6a5a0" stroke-width="3"/>
+            <path d="M60 118 l-30 -6 M60 128 l-30 4 M130 118 l30 -6 M130 128 l30 4" stroke-width="3"/>
+            <path d="M60 150 Q95 178 130 150 L130 172 Q95 190 60 172 Z" fill="#f2b632"/></g></svg>
+      </div>
+    </div>
+
+    <!-- LE TRAIT (jaune) -->
+    <div class="tile" style="left:36px; top:1130px; width:360px; height:330px; background:#f2c744; transform:rotate(-1deg);">
+      <span class="cap dark">Le trait</span>
+      <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+        <svg class="ink" viewBox="0 0 300 180" style="width:82%">
+          <g stroke="#26201a" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 60 q40 -40 80 0 t80 0 t80 0" stroke-width="12"/>
+            <path d="M30 110 h230" stroke-width="9"/>
+            <circle cx="150" cy="150" r="18" stroke-width="10" fill="#c0492f"/>
+          </g></svg>
+      </div>
+      <div class="note">Contours épais &amp; tremblés — aplats, zéro dégradé.</div>
+    </div>
+
+    <!-- LIEU (lavande) -->
+    <div class="tile" style="left:420px; top:1130px; width:336px; height:330px; background:#9b7ede; transform:rotate(1deg);">
+      <span class="cap light">Décor</span>
+      <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:6px; padding-top:30px;">
+        <svg class="ink" viewBox="0 0 200 170" style="width:70%">
+          <polygon points="100,20 20,150 180,150" fill="#eccf6b" stroke="#26201a" stroke-width="7" stroke-linejoin="round"/>
+          <polygon points="100,20 78,55 122,55" fill="#fff6d8" stroke="#26201a" stroke-width="4"/>
+          <line x1="100" y1="20" x2="60" y2="150" stroke="#c99a3a" stroke-width="3"/><line x1="100" y1="20" x2="140" y2="150" stroke="#c99a3a" stroke-width="3"/></svg>
+      </div>
+      <div class="note" style="color:#fff;">Désert plat, pyramides &amp; soleil au trait.</div>
+    </div>
+
+    <!-- TON (foncé) -->
+    <div class="tile" style="left:780px; top:1130px; width:384px; height:330px; background:#26201a; transform:rotate(-.7deg);">
+      <span class="cap light">Le ton</span>
+      <div class="tone">
+        <span>Doodle</span><span class="dot">•</span><span>Funky</span><span class="dot">•</span>
+        <span>Fait main</span><span class="dot">•</span><span>Fun</span><span class="dot">•</span>
+        <span>Éducatif</span><span class="dot">•</span><span>Surprenant</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
