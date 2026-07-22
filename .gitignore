@@ -5,3 +5,4 @@ episodes/render/node_modules_pw
 episodes/render/shot_*.png
 episodes/render/fonts.css
 episodes/render/*.ttf
+episodes/render/*.png
