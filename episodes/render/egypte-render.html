@@ -6,78 +6,77 @@
 <title>L'Égypte — 5 secrets fous</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  html,body { width:100%; height:100%; overflow:hidden;
-    font-family:"Liberation Sans","Arial",sans-serif; }
+  html,body { width:100%; height:100%; overflow:hidden; font-family:"Liberation Sans","Arial",sans-serif; }
 
-  #stage {
-    position:relative; width:100vw; height:100vh; overflow:hidden;
-    background:linear-gradient(180deg,#fbef9f 0%, #f4df83 52%, #eccf6b 100%);
-  }
+  #stage { position:relative; width:100vw; height:100vh; overflow:hidden;
+    background:linear-gradient(180deg,#fbef9f 0%, #f4df83 52%, #eccf6b 100%); }
 
-  /* --- Décor (soleil, pyramides) --- */
   .bg { position:absolute; inset:0; width:100%; height:100%; z-index:1; }
 
-  /* --- Bandeau chaîne --- */
-  .brand { position:absolute; top:2.4vh; left:0; right:0; text-align:center; z-index:6;
+  .brand { position:absolute; top:2.4vh; left:0; right:0; text-align:center; z-index:8;
     font-size:3vw; font-weight:800; letter-spacing:.18em; color:#8a6a1e; text-transform:uppercase; }
 
-  /* --- Barre de progression --- */
-  .bar { position:absolute; top:0; left:0; height:1vh; width:0; z-index:7;
+  .bar { position:absolute; top:0; left:0; height:1vh; width:0; z-index:9;
     background:linear-gradient(90deg,#c8892a,#8a5a12); animation:prog 82s linear forwards; }
   @keyframes prog { to { width:100%; } }
 
-  /* --- Typo condensée italique (façon référence) --- */
   .cond { font-weight:700; font-style:italic; text-transform:uppercase;
     display:inline-block; transform:scaleX(.84); transform-origin:center; letter-spacing:.01em; }
 
-  /* --- Zone texte (haut) --- */
-  .scenes { position:absolute; top:0; left:0; right:0; height:52vh; z-index:5; }
-  .scene { position:absolute; top:9vh; left:0; right:0; padding:0 6vw; text-align:center;
-    opacity:0; animation-fill-mode:both; display:flex; flex-direction:column; align-items:center; gap:1.6vh; }
-
+  /* Zone texte (haut) */
+  .scenes { position:absolute; top:0; left:0; right:0; height:40vh; z-index:6; }
+  .scene { position:absolute; top:8vh; left:0; right:0; padding:0 6vw; text-align:center;
+    opacity:0; animation-fill-mode:both; display:flex; flex-direction:column; align-items:center; gap:1.4vh; }
   .eyebrow { background:#2b2016; color:#f6e7a0; font-size:4vw; padding:.7vh 4vw; border-radius:1.4vw;
     box-shadow:0 .5vh 0 #b98a2a; }
-  .num-big { font-size:9vw; color:#c0492f; -webkit-text-stroke:.4vw #2b2016;
-    text-shadow:.5vw .5vw 0 #e8b53a; line-height:.9; }
-  .headline { font-size:9.2vw; color:#2b2016; line-height:1.02; }
+  .headline { font-size:8.6vw; color:#2b2016; line-height:1.02; }
   .headline.big { font-size:12vw; }
-  .sub { font-size:5.4vw; font-weight:800; color:#5a4020; font-style:italic; max-width:88vw; line-height:1.25;
+  .sub { font-size:5vw; font-weight:800; color:#5a4020; font-style:italic; max-width:88vw; line-height:1.22;
     transform:scaleX(.92); }
   .pop { color:#c0492f; }
 
-  /* Timeline scènes : sc <durée> <délai> */
-  #s0{ animation:sc 5s 0s;}
-  #s1{ animation:sc 13s 5s;}
-  #s2{ animation:sc 13s 18s;}
-  #s3{ animation:sc 13s 31s;}
-  #s4{ animation:sc 13s 44s;}
-  #s5{ animation:sc 15s 57s;}
-  #s6{ animation:sc 10s 72s;}
+  /* Timeline commune (texte + illustrations) */
+  #s0,.t0{ animation:sc 5s 0s;}
+  #s1,.t1{ animation:sc 13s 5s;}
+  #s2,.t2{ animation:sc 13s 18s;}
+  #s3,.t3{ animation:sc 13s 31s;}
+  #s4,.t4{ animation:sc 13s 44s;}
+  #s5,.t5{ animation:sc 15s 57s;}
+  #s6,.t6{ animation:sc 10s 72s;}
   @keyframes sc {
-    0%{opacity:0; transform:translateY(3vh) scale(.96);}
-    9%{opacity:1; transform:none;}
-    91%{opacity:1; transform:none;}
-    100%{opacity:0; transform:translateY(-2vh) scale(.98);}
+    0%{opacity:0; transform:translateY(3vh) scale(.9);}
+    7%{opacity:1; transform:none;}
+    92%{opacity:1; transform:none;}
+    100%{opacity:0; transform:translateY(-2vh) scale(.96);}
   }
 
-  /* --- Personnage pharaon --- */
-  .pharaoh { position:absolute; bottom:0; left:50%; transform:translateX(-50%);
-    height:60vh; width:auto; z-index:4; }
+  /* Illustrations (objets & gens) */
+  .prop { position:absolute; z-index:5; opacity:0; animation-fill-mode:both; }
+  .prop svg { width:100%; height:auto; display:block; overflow:visible; }
+  .prop .inner { animation:floaty 2.8s ease-in-out infinite; transform-origin:center; }
+  .prop:nth-of-type(even) .inner { animation-duration:3.2s; animation-delay:-.6s; }
+  @keyframes floaty { 0%,100%{transform:translateY(0) rotate(-1.5deg);} 50%{transform:translateY(-14px) rotate(1.5deg);} }
+  .plabel { margin-top:.6vh; text-align:center; font-size:3.1vw; font-weight:800; font-style:italic;
+    color:#4a3418; text-transform:uppercase; }
+  .slotL  { left:2vw;  top:41vh; width:29vw; }
+  .slotR  { right:2vw; top:41vh; width:29vw; }
+  .slotL2 { left:3vw;  top:62vh; width:24vw; }
+  .slotR2 { right:3vw; top:61vh; width:25vw; }
 
+  /* Personnage */
+  .pharaoh { position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+    height:56vh; width:auto; z-index:4; }
   #char { animation:bob 2.4s ease-in-out infinite; transform-origin:150px 520px; }
   @keyframes bob { 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-14px) rotate(-1deg);} }
-
   #eyes { animation:blink 4.4s infinite; transform-origin:150px 150px; transform-box:fill-box; }
   @keyframes blink { 0%,93%,100%{transform:scaleY(1);} 96%{transform:scaleY(.08);} }
-
   #mouth { animation:talk .32s ease-in-out infinite alternate; transform-origin:150px 182px; transform-box:fill-box; }
   @keyframes talk { from{transform:scaleY(.55);} to{transform:scaleY(1.2);} }
-
   #armPoint { animation:point 2.4s ease-in-out infinite; transform-origin:182px 262px; transform-box:fill-box; }
   @keyframes point { 0%,100%{transform:rotate(0deg);} 50%{transform:rotate(-9deg);} }
 
   @media (prefers-reduced-motion: reduce) {
-    #char,#eyes,#mouth,#armPoint,.bar,.scene { animation-duration:.01ms !important; }
+    #char,#eyes,#mouth,#armPoint,.bar,.scene,.prop,.inner { animation-duration:.01ms !important; }
   }
 </style>
 </head>
@@ -88,12 +87,10 @@
     <svg class="bg" viewBox="0 0 108 192" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <circle cx="86" cy="26" r="13" fill="#fdf3b4"/>
       <circle cx="86" cy="26" r="13" fill="none" stroke="#f0d97a" stroke-width="1.2"/>
-      <!-- pyramides -->
       <polygon points="20,92 2,124 38,124" fill="#e2c368" stroke="#b8973c" stroke-width="1" stroke-linejoin="round"/>
       <polygon points="86,96 66,124 106,124" fill="#e2c368" stroke="#b8973c" stroke-width="1" stroke-linejoin="round"/>
       <polygon points="54,68 28,124 80,124" fill="#e7cb74" stroke="#b8973c" stroke-width="1.2" stroke-linejoin="round"/>
       <line x1="54" y1="68" x2="54" y2="124" stroke="#cbaa50" stroke-width=".8"/>
-      <!-- sable au sol -->
       <rect x="0" y="124" width="108" height="68" fill="#eccf6b"/>
       <path d="M0 124 Q 54 130 108 124 L108 192 L0 192 Z" fill="#e6c65f"/>
     </svg>
@@ -101,64 +98,183 @@
     <div class="brand cond">1 Minute d'Histoire</div>
     <div class="bar"></div>
 
-    <!-- TEXTES -->
+    <!-- ================= TEXTES ================= -->
     <div class="scenes">
       <div class="scene" id="s0">
-        <div class="headline big cond">L'Égypte 𓂀</div>
+        <div class="headline big cond">L'Égypte</div>
         <div class="sub cond">5 secrets fous que <span class="pop">personne</span> ne t'a appris</div>
       </div>
-
       <div class="scene" id="s1">
         <div class="eyebrow cond">Secret n°5</div>
         <div class="headline cond">Cléopâtre</div>
-        <div class="sub cond">a vécu plus près de <span class="pop">l'invention de l'iPhone</span> que de la construction des pyramides 🤯</div>
+        <div class="sub cond">a vécu plus près de <span class="pop">l'iPhone</span> que des pyramides 🤯</div>
       </div>
-
       <div class="scene" id="s2">
         <div class="eyebrow cond">Secret n°4</div>
         <div class="headline cond">Les pyramides</div>
-        <div class="sub cond">bâties par des <span class="pop">ouvriers payés</span>… en pain et en bière 🍺 — pas par des esclaves !</div>
+        <div class="sub cond">bâties par des <span class="pop">ouvriers payés</span> en pain et en bière — pas des esclaves !</div>
       </div>
-
       <div class="scene" id="s3">
         <div class="eyebrow cond">Secret n°3</div>
         <div class="headline cond">Ils avaient déjà</div>
-        <div class="sub cond">le <span class="pop">dentifrice</span>, un calendrier de <span class="pop">365 jours</span> et le papier (papyrus) 📜</div>
+        <div class="sub cond">le <span class="pop">dentifrice</span>, un calendrier de <span class="pop">365 jours</span> et le papyrus</div>
       </div>
-
       <div class="scene" id="s4">
         <div class="eyebrow cond">Secret n°2</div>
         <div class="headline cond">Ramsès II</div>
-        <div class="sub cond"><span class="pop">90 ans</span> de règne de vie, plus de <span class="pop">100 enfants</span> 👑 une vraie légende</div>
+        <div class="sub cond"><span class="pop">90 ans</span> de vie et plus de <span class="pop">100 enfants</span> 👑</div>
       </div>
-
       <div class="scene" id="s5">
         <div class="eyebrow cond">Secret n°1</div>
-        <div class="headline cond">Les chats étaient sacrés 🐱</div>
+        <div class="headline cond">Les chats sacrés</div>
         <div class="sub cond">en tuer un était puni de <span class="pop">peine de mort</span> !</div>
       </div>
-
       <div class="scene" id="s6">
         <div class="headline big cond">Abonne-toi 🔥</div>
         <div class="sub cond">un nouveau pays à découvrir chaque jour</div>
       </div>
     </div>
 
-    <!-- PHARAON -->
+    <!-- ================= ILLUSTRATIONS ================= -->
+
+    <!-- S0 : ankh + œil oudjat -->
+    <div class="prop slotL t0"><div class="inner"><svg viewBox="0 0 120 160">
+      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#e8b53a">
+        <circle cx="60" cy="40" r="24" fill="none"/>
+        <line x1="60" y1="64" x2="60" y2="140"/>
+        <line x1="30" y1="88" x2="90" y2="88"/>
+      </g></svg></div></div>
+    <div class="prop slotR t0"><div class="inner"><svg viewBox="0 0 160 120">
+      <g stroke="#2b2016" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 60 Q70 25 120 60 Q70 95 20 60 Z" fill="#fff"/>
+        <circle cx="72" cy="60" r="15" fill="#2b5fa5"/><circle cx="72" cy="60" r="6" fill="#2b2016" stroke="none"/>
+        <path d="M72 75 L72 100 M72 100 L92 100" stroke-width="6"/>
+        <path d="M40 78 Q55 100 78 96" stroke-width="6"/>
+      </g></svg></div></div>
+
+    <!-- S1 : pyramide (jadis) vs smartphone (aujourd'hui) -->
+    <div class="prop slotL t1"><div class="inner"><svg viewBox="0 0 200 170">
+      <polygon points="100,20 20,150 180,150" fill="#e7cb74" stroke="#2b2016" stroke-width="6" stroke-linejoin="round"/>
+      <line x1="100" y1="20" x2="100" y2="150" stroke="#c99a3a" stroke-width="4"/>
+      <line x1="100" y1="20" x2="60" y2="150" stroke="#c99a3a" stroke-width="3"/>
+      <line x1="100" y1="20" x2="140" y2="150" stroke="#c99a3a" stroke-width="3"/>
+    </svg><div class="plabel">−2560 av. J.-C.</div></div></div>
+    <div class="prop slotR t1"><div class="inner"><svg viewBox="0 0 130 200">
+      <rect x="20" y="12" width="90" height="176" rx="16" fill="#2b2016"/>
+      <rect x="28" y="30" width="74" height="132" rx="4" fill="#8fd0ff"/>
+      <circle cx="65" cy="176" r="7" fill="#5a5a5a"/>
+      <g stroke="#2b2016" stroke-width="0" fill="#c0492f"><path d="M65 96 l-13 -13 a9 9 0 0 1 13 -2 a9 9 0 0 1 13 2 z"/></g>
+      <path d="M65 96 l0 22 M52 118 l26 0" stroke="#2b6f3f" stroke-width="5"/>
+    </svg><div class="plabel">aujourd'hui</div></div></div>
+
+    <!-- S2 : ouvrier + bloc / chope de bière + pain -->
+    <div class="prop slotL t2"><div class="inner"><svg viewBox="0 0 180 200">
+      <rect x="45" y="10" width="90" height="55" rx="6" fill="#d9b46a" stroke="#2b2016" stroke-width="6"/>
+      <line x1="90" y1="10" x2="90" y2="65" stroke="#b8973c" stroke-width="3"/>
+      <g stroke="#2b2016" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="#d9a86b">
+        <circle cx="90" cy="95" r="20"/>
+        <path d="M75 112 L70 160 L110 160 L105 112 Z" fill="#c0492f"/>
+        <path d="M78 80 L70 66 M102 80 L110 66" fill="none"/>
+        <line x1="80" y1="160" x2="76" y2="192"/><line x1="100" y1="160" x2="104" y2="192"/>
+      </g>
+    </svg><div class="plabel">ouvriers</div></div></div>
+    <div class="prop slotR t2"><div class="inner"><svg viewBox="0 0 200 180">
+      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round">
+        <rect x="30" y="55" width="70" height="110" rx="8" fill="#f2b134"/>
+        <path d="M100 75 q34 0 34 32 q0 30 -34 30" fill="none" stroke-width="8"/>
+        <ellipse cx="65" cy="52" rx="42" ry="18" fill="#fff8ec"/>
+        <circle cx="45" cy="44" r="12" fill="#fff8ec"/><circle cx="70" cy="40" r="14" fill="#fff8ec"/><circle cx="90" cy="46" r="11" fill="#fff8ec"/>
+        <ellipse cx="158" cy="140" rx="34" ry="24" fill="#d98a3a"/>
+        <line x1="140" y1="128" x2="150" y2="152" stroke-width="4"/><line x1="158" y1="122" x2="166" y2="150" stroke-width="4"/><line x1="176" y1="128" x2="182" y2="150" stroke-width="4"/>
+      </g>
+    </svg><div class="plabel">payés en bière &amp; pain</div></div></div>
+
+    <!-- S3 : papyrus / calendrier 365 / dent + brosse -->
+    <div class="prop slotL t3"><div class="inner"><svg viewBox="0 0 170 150">
+      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round">
+        <rect x="30" y="20" width="110" height="110" fill="#f3ead0"/>
+        <ellipse cx="30" cy="75" rx="12" ry="55" fill="#e7d9ad"/><ellipse cx="140" cy="75" rx="12" ry="55" fill="#e7d9ad"/>
+        <g stroke="#9a7d3a" stroke-width="4"><line x1="48" y1="45" x2="122" y2="45"/><line x1="48" y1="63" x2="122" y2="63"/><line x1="48" y1="81" x2="112" y2="81"/><line x1="48" y1="99" x2="122" y2="99"/></g>
+      </g>
+    </svg><div class="plabel">papyrus</div></div></div>
+    <div class="prop slotR t3"><div class="inner"><svg viewBox="0 0 160 160">
+      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round">
+        <rect x="20" y="24" width="120" height="118" rx="10" fill="#fff8ec"/>
+        <rect x="20" y="24" width="120" height="30" rx="10" fill="#c0492f"/>
+        <line x1="50" y1="14" x2="50" y2="40"/><line x1="110" y1="14" x2="110" y2="40"/>
+      </g>
+      <text x="80" y="112" text-anchor="middle" font-family="Liberation Sans" font-weight="700" font-style="italic" font-size="46" fill="#2b2016">365</text>
+    </svg><div class="plabel">calendrier</div></div></div>
+    <div class="prop slotL2 t3"><div class="inner"><svg viewBox="0 0 160 130">
+      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round">
+        <path d="M40 40 q10 -22 30 -12 q20 -10 30 12 q6 40 -14 66 q-8 8 -16 -12 q-8 20 -16 12 q-20 -26 -14 -66 Z" fill="#fff"/>
+        <rect x="96" y="16" width="14" height="70" rx="6" fill="#2b5fa5" transform="rotate(38 103 51)"/>
+        <rect x="120" y="8" width="30" height="16" rx="6" fill="#7ec7f0" transform="rotate(38 135 16)"/>
+      </g>
+      <path d="M58 30 l6 10 l11 -6" stroke="#e8b53a" stroke-width="5" fill="none"/>
+    </svg><div class="plabel">dentifrice</div></div></div>
+
+    <!-- S4 : Ramsès (couronne) + ribambelle d'enfants -->
+    <div class="prop slotL t4"><div class="inner"><svg viewBox="0 0 150 210">
+      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M45 60 Q75 6 105 60 Z" fill="#e8b53a"/>
+        <rect x="66" y="18" width="18" height="40" rx="8" fill="#c0492f"/>
+        <path d="M52 58 L45 130 L105 130 L98 58 Q75 74 52 58 Z" fill="#d9a86b"/>
+        <circle cx="66" cy="90" r="4" fill="#2b2016" stroke="none"/><circle cx="86" cy="90" r="4" fill="#2b2016" stroke="none"/>
+        <path d="M66 104 q9 6 18 0" fill="none" stroke-width="4"/>
+        <rect x="60" y="130" width="30" height="16" fill="#2b5fa5"/>
+        <path d="M55 146 L50 200 L100 200 L95 146 Z" fill="#f3ead0"/>
+      </g>
+    </svg><div class="plabel">Ramsès II · 90 ans</div></div></div>
+    <div class="prop slotR t4"><div class="inner"><svg viewBox="0 0 220 200">
+      <g stroke="#2b2016" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <g fill="#d9a86b"><circle cx="40" cy="120" r="15"/><path d="M28 134 l-3 44 l30 0 l-3 -44 Z" fill="#c0492f"/></g>
+        <g fill="#d9a86b"><circle cx="80" cy="108" r="17"/><path d="M66 124 l-3 54 l34 0 l-3 -54 Z" fill="#2aa198"/></g>
+        <g fill="#d9a86b"><circle cx="124" cy="112" r="16"/><path d="M110 128 l-3 50 l32 0 l-3 -50 Z" fill="#e8b53a"/></g>
+        <g fill="#d9a86b"><circle cx="164" cy="122" r="14"/><path d="M152 136 l-3 42 l28 0 l-3 -42 Z" fill="#8a5ac0"/></g>
+      </g>
+      <text x="150" y="60" text-anchor="middle" font-family="Liberation Sans" font-weight="700" font-style="italic" font-size="52" fill="#c0492f" stroke="#2b2016" stroke-width="1.5">100+</text>
+    </svg><div class="plabel">enfants</div></div></div>
+
+    <!-- S5 : chat sacré + panneau interdit -->
+    <div class="prop slotR t5"><div class="inner"><svg viewBox="0 0 190 210">
+      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M60 40 L48 4 L86 32 Z" fill="#2b2016"/><path d="M130 40 L142 4 L104 32 Z" fill="#2b2016"/>
+        <path d="M40 120 Q40 40 95 40 Q150 40 150 120 Q150 190 95 190 Q40 190 40 120 Z" fill="#2b2016"/>
+        <path d="M150 150 q34 6 22 -40 q-10 26 -22 20" fill="#2b2016"/>
+        <g stroke="none"><ellipse cx="76" cy="96" rx="8" ry="12" fill="#e8b53a"/><ellipse cx="114" cy="96" rx="8" ry="12" fill="#e8b53a"/>
+          <ellipse cx="76" cy="98" rx="3" ry="9" fill="#2b2016"/><ellipse cx="114" cy="98" rx="3" ry="9" fill="#2b2016"/></g>
+        <path d="M95 112 l-6 8 l12 0 Z" fill="#e6a5a0" stroke-width="3"/>
+        <path d="M95 120 l0 8 M95 128 q-10 4 -16 -2 M95 128 q10 4 16 -2" fill="none" stroke-width="3"/>
+        <path d="M60 118 l-30 -6 M60 128 l-30 4 M130 118 l30 -6 M130 128 l30 4" stroke-width="3"/>
+        <path d="M60 150 Q95 178 130 150 L130 172 Q95 190 60 172 Z" fill="#e8b53a"/>
+      </g>
+    </svg><div class="plabel">chats sacrés</div></div></div>
+    <div class="prop slotL2 t5"><div class="inner"><svg viewBox="0 0 130 130">
+      <circle cx="65" cy="65" r="52" fill="#fff" stroke="#c0492f" stroke-width="12"/>
+      <line x1="30" y1="30" x2="100" y2="100" stroke="#c0492f" stroke-width="12"/>
+      <text x="65" y="82" text-anchor="middle" font-size="46">☠️</text>
+    </svg><div class="plabel">peine de mort</div></div></div>
+
+    <!-- S6 : bouton s'abonner + cloche -->
+    <div class="prop slotL t6"><div class="inner"><svg viewBox="0 0 150 150">
+      <g stroke="#2b2016" stroke-width="6" stroke-linejoin="round" fill="#e8b53a">
+        <path d="M75 20 Q115 20 110 80 Q108 100 125 112 L25 112 Q42 100 40 80 Q35 20 75 20 Z"/>
+        <circle cx="75" cy="128" r="12"/>
+        <rect x="70" y="8" width="10" height="14" rx="4"/>
+      </g>
+    </svg></div></div>
+    <div class="prop slotR t6"><div class="inner">
+      <div style="background:#c0492f;color:#fff;border:5px solid #2b2016;border-radius:14px;padding:2vh 3vw;font-size:5vw;font-weight:800;font-style:italic;text-transform:uppercase;text-align:center;box-shadow:0 6px 0 #2b2016;">S'abonner</div>
+    </div></div>
+
+    <!-- ================= PHARAON ================= -->
     <svg class="pharaoh" viewBox="0 0 300 520" aria-hidden="true">
-      <!-- ombre au sol -->
       <ellipse cx="150" cy="508" rx="78" ry="13" fill="rgba(90,60,10,.18)"/>
-
       <g id="char" stroke="#2b2016" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
-
-        <!-- ===== NEMES (coiffe) arrière + lappets ===== -->
-        <!-- couronne / haut -->
         <path d="M104 128 Q150 54 196 128 Z" fill="#e8b53a"/>
-        <!-- lappet gauche -->
         <path d="M112 118 L88 262 L128 262 L130 150 Z" fill="#e8b53a"/>
-        <!-- lappet droit -->
         <path d="M188 118 L212 262 L172 262 L170 150 Z" fill="#e8b53a"/>
-        <!-- rayures bleues -->
         <g stroke="#2b5fa5" stroke-width="3">
           <line x1="116" y1="150" x2="126" y2="150"/><line x1="112" y1="180" x2="125" y2="180"/>
           <line x1="107" y1="210" x2="123" y2="210"/><line x1="102" y1="240" x2="122" y2="240"/>
@@ -166,81 +282,36 @@
           <line x1="193" y1="210" x2="177" y2="210"/><line x1="198" y1="240" x2="178" y2="240"/>
           <line x1="120" y1="96" x2="180" y2="96"/>
         </g>
-        <!-- bandeau frontal -->
         <path d="M108 120 Q150 100 192 120 L188 134 Q150 116 112 134 Z" fill="#2b5fa5"/>
-
-        <!-- ===== VISAGE ===== -->
         <path d="M116 122 Q150 112 184 122 L182 190 Q150 214 118 190 Z" fill="#d9a86b"/>
-
-        <!-- uraeus (cobra) -->
         <path d="M150 116 q-8 -10 0 -18 q8 6 0 14" fill="#3aa06a" stroke-width="3"/>
         <circle cx="150" cy="99" r="3.4" fill="#c0492f" stroke-width="2.5"/>
-
-        <!-- yeux -->
         <g id="eyes">
-          <g stroke-width="0" fill="#2b2016">
-            <ellipse cx="133" cy="150" rx="5.5" ry="6.5"/>
-            <ellipse cx="167" cy="150" rx="5.5" ry="6.5"/>
-          </g>
-          <!-- trait de khôl -->
-          <path d="M138 150 q9 -1 15 4" fill="none" stroke-width="3"/>
-          <path d="M162 150 q-9 -1 -15 4" fill="none" stroke-width="3"/>
+          <g stroke-width="0" fill="#2b2016"><ellipse cx="133" cy="150" rx="5.5" ry="6.5"/><ellipse cx="167" cy="150" rx="5.5" ry="6.5"/></g>
+          <path d="M138 150 q9 -1 15 4" fill="none" stroke-width="3"/><path d="M162 150 q-9 -1 -15 4" fill="none" stroke-width="3"/>
         </g>
-        <!-- sourcils -->
-        <path d="M124 140 q9 -5 18 -1" fill="none" stroke-width="3.5"/>
-        <path d="M176 140 q-9 -5 -18 -1" fill="none" stroke-width="3.5"/>
-        <!-- nez -->
+        <path d="M124 140 q9 -5 18 -1" fill="none" stroke-width="3.5"/><path d="M176 140 q-9 -5 -18 -1" fill="none" stroke-width="3.5"/>
         <path d="M150 156 q-4 10 -1 16 q3 2 6 0" fill="none" stroke-width="3"/>
-        <!-- bouche -->
         <path id="mouth" d="M136 184 q14 10 28 0 q-14 -3 -28 0 Z" fill="#8a3b2c" stroke-width="3"/>
-
-        <!-- barbe postiche -->
         <g>
           <path d="M141 208 L138 262 Q150 274 162 262 L159 208 Q150 214 141 208 Z" fill="#2b5fa5"/>
-          <g stroke="#1c3f73" stroke-width="2.5">
-            <line x1="140" y1="222" x2="160" y2="222"/><line x1="139" y1="236" x2="161" y2="236"/>
-            <line x1="139" y1="250" x2="161" y2="250"/>
-          </g>
+          <g stroke="#1c3f73" stroke-width="2.5"><line x1="140" y1="222" x2="160" y2="222"/><line x1="139" y1="236" x2="161" y2="236"/><line x1="139" y1="250" x2="161" y2="250"/></g>
         </g>
-
-        <!-- ===== CORPS ===== -->
-        <!-- cou -->
         <rect x="138" y="196" width="24" height="20" fill="#d9a86b"/>
-        <!-- torse -->
         <path d="M120 262 Q150 250 180 262 L176 356 L124 356 Z" fill="#d9a86b"/>
-
-        <!-- jambes -->
         <path d="M132 352 L128 430 L146 430 L148 352 Z" fill="#d9a86b"/>
         <path d="M152 352 L154 430 L172 430 L168 352 Z" fill="#d9a86b"/>
-        <!-- pieds -->
         <path d="M124 430 q-6 8 6 10 l16 0 0 -10 Z" fill="#c99a5c"/>
         <path d="M176 430 q6 8 -6 10 l-16 0 0 -10 Z" fill="#c99a5c"/>
-
-        <!-- pagne (shendyt) -->
         <path d="M116 330 L184 330 L192 372 L108 372 Z" fill="#f3ead0"/>
-        <g stroke="#c9bd94" stroke-width="2.5">
-          <line x1="130" y1="332" x2="126" y2="370"/><line x1="145" y1="332" x2="144" y2="371"/>
-          <line x1="160" y1="332" x2="162" y2="370"/><line x1="174" y1="332" x2="178" y2="370"/>
-        </g>
-        <!-- ceinture -->
+        <g stroke="#c9bd94" stroke-width="2.5"><line x1="130" y1="332" x2="126" y2="370"/><line x1="145" y1="332" x2="144" y2="371"/><line x1="160" y1="332" x2="162" y2="370"/><line x1="174" y1="332" x2="178" y2="370"/></g>
         <rect x="112" y="326" width="76" height="12" fill="#e8b53a"/>
-        <!-- tablier central -->
         <path d="M143 338 L157 338 L153 380 L147 380 Z" fill="#e8b53a"/>
-
-        <!-- collier ousekh -->
         <path d="M112 264 Q150 300 188 264 Q150 288 112 264 Z" fill="#e8b53a"/>
         <path d="M118 270 Q150 300 182 270" fill="none" stroke="#2aa198" stroke-width="5"/>
         <path d="M124 276 Q150 300 176 276" fill="none" stroke="#c0492f" stroke-width="4"/>
-
-        <!-- bras gauche (tient un ankh) -->
         <path d="M124 268 Q104 300 100 340" fill="none" stroke-width="9"/>
-        <g stroke-width="3.5">
-          <circle cx="97" cy="352" r="7" fill="none"/>
-          <line x1="97" y1="359" x2="97" y2="378"/>
-          <line x1="88" y1="366" x2="106" y2="366"/>
-        </g>
-
-        <!-- bras droit qui pointe vers le texte -->
+        <g stroke-width="3.5"><circle cx="97" cy="352" r="7" fill="none"/><line x1="97" y1="359" x2="97" y2="378"/><line x1="88" y1="366" x2="106" y2="366"/></g>
         <g id="armPoint">
           <path d="M178 266 Q206 250 214 214" fill="none" stroke-width="9"/>
           <circle cx="214" cy="206" r="8" fill="#d9a86b"/>
