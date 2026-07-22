@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>L'Égypte — 5 secrets fous</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:100%; height:100%; overflow:hidden;
+    font-family:"Liberation Sans","Arial",sans-serif; }
+
+  #stage {
+    position:relative; width:100vw; height:100vh; overflow:hidden;
+    background:linear-gradient(180deg,#fbef9f 0%, #f4df83 52%, #eccf6b 100%);
+  }
+
+  /* --- Décor (soleil, pyramides) --- */
+  .bg { position:absolute; inset:0; width:100%; height:100%; z-index:1; }
+
+  /* --- Bandeau chaîne --- */
+  .brand { position:absolute; top:2.4vh; left:0; right:0; text-align:center; z-index:6;
+    font-size:3vw; font-weight:800; letter-spacing:.18em; color:#8a6a1e; text-transform:uppercase; }
+
+  /* --- Barre de progression --- */
+  .bar { position:absolute; top:0; left:0; height:1vh; width:0; z-index:7;
+    background:linear-gradient(90deg,#c8892a,#8a5a12); animation:prog 82s linear forwards; }
+  @keyframes prog { to { width:100%; } }
+
+  /* --- Typo condensée italique (façon référence) --- */
+  .cond { font-weight:700; font-style:italic; text-transform:uppercase;
+    display:inline-block; transform:scaleX(.84); transform-origin:center; letter-spacing:.01em; }
+
+  /* --- Zone texte (haut) --- */
+  .scenes { position:absolute; top:0; left:0; right:0; height:52vh; z-index:5; }
+  .scene { position:absolute; top:9vh; left:0; right:0; padding:0 6vw; text-align:center;
+    opacity:0; animation-fill-mode:both; display:flex; flex-direction:column; align-items:center; gap:1.6vh; }
+
+  .eyebrow { background:#2b2016; color:#f6e7a0; font-size:4vw; padding:.7vh 4vw; border-radius:1.4vw;
+    box-shadow:0 .5vh 0 #b98a2a; }
+  .num-big { font-size:9vw; color:#c0492f; -webkit-text-stroke:.4vw #2b2016;
+    text-shadow:.5vw .5vw 0 #e8b53a; line-height:.9; }
+  .headline { font-size:9.2vw; color:#2b2016; line-height:1.02; }
+  .headline.big { font-size:12vw; }
+  .sub { font-size:5.4vw; font-weight:800; color:#5a4020; font-style:italic; max-width:88vw; line-height:1.25;
+    transform:scaleX(.92); }
+  .pop { color:#c0492f; }
+
+  /* Timeline scènes : sc <durée> <délai> */
+  #s0{ animation:sc 5s 0s;}
+  #s1{ animation:sc 13s 5s;}
+  #s2{ animation:sc 13s 18s;}
+  #s3{ animation:sc 13s 31s;}
+  #s4{ animation:sc 13s 44s;}
+  #s5{ animation:sc 15s 57s;}
+  #s6{ animation:sc 10s 72s;}
+  @keyframes sc {
+    0%{opacity:0; transform:translateY(3vh) scale(.96);}
+    9%{opacity:1; transform:none;}
+    91%{opacity:1; transform:none;}
+    100%{opacity:0; transform:translateY(-2vh) scale(.98);}
+  }
+
+  /* --- Personnage pharaon --- */
+  .pharaoh { position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+    height:60vh; width:auto; z-index:4; }
+
+  #char { animation:bob 2.4s ease-in-out infinite; transform-origin:150px 520px; }
+  @keyframes bob { 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-14px) rotate(-1deg);} }
+
+  #eyes { animation:blink 4.4s infinite; transform-origin:150px 150px; transform-box:fill-box; }
+  @keyframes blink { 0%,93%,100%{transform:scaleY(1);} 96%{transform:scaleY(.08);} }
+
+  #mouth { animation:talk .32s ease-in-out infinite alternate; transform-origin:150px 182px; transform-box:fill-box; }
+  @keyframes talk { from{transform:scaleY(.55);} to{transform:scaleY(1.2);} }
+
+  #armPoint { animation:point 2.4s ease-in-out infinite; transform-origin:182px 262px; transform-box:fill-box; }
+  @keyframes point { 0%,100%{transform:rotate(0deg);} 50%{transform:rotate(-9deg);} }
+
+  @media (prefers-reduced-motion: reduce) {
+    #char,#eyes,#mouth,#armPoint,.bar,.scene { animation-duration:.01ms !important; }
+  }
+</style>
+</head>
+<body>
+  <div id="stage">
+
+    <!-- DÉCOR -->
+    <svg class="bg" viewBox="0 0 108 192" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <circle cx="86" cy="26" r="13" fill="#fdf3b4"/>
+      <circle cx="86" cy="26" r="13" fill="none" stroke="#f0d97a" stroke-width="1.2"/>
+      <!-- pyramides -->
+      <polygon points="20,92 2,124 38,124" fill="#e2c368" stroke="#b8973c" stroke-width="1" stroke-linejoin="round"/>
+      <polygon points="86,96 66,124 106,124" fill="#e2c368" stroke="#b8973c" stroke-width="1" stroke-linejoin="round"/>
+      <polygon points="54,68 28,124 80,124" fill="#e7cb74" stroke="#b8973c" stroke-width="1.2" stroke-linejoin="round"/>
+      <line x1="54" y1="68" x2="54" y2="124" stroke="#cbaa50" stroke-width=".8"/>
+      <!-- sable au sol -->
+      <rect x="0" y="124" width="108" height="68" fill="#eccf6b"/>
+      <path d="M0 124 Q 54 130 108 124 L108 192 L0 192 Z" fill="#e6c65f"/>
+    </svg>
+
+    <div class="brand cond">1 Minute d'Histoire</div>
+    <div class="bar"></div>
+
+    <!-- TEXTES -->
+    <div class="scenes">
+      <div class="scene" id="s0">
+        <div class="headline big cond">L'Égypte 𓂀</div>
+        <div class="sub cond">5 secrets fous que <span class="pop">personne</span> ne t'a appris</div>
+      </div>
+
+      <div class="scene" id="s1">
+        <div class="eyebrow cond">Secret n°5</div>
+        <div class="headline cond">Cléopâtre</div>
+        <div class="sub cond">a vécu plus près de <span class="pop">l'invention de l'iPhone</span> que de la construction des pyramides 🤯</div>
+      </div>
+
+      <div class="scene" id="s2">
+        <div class="eyebrow cond">Secret n°4</div>
+        <div class="headline cond">Les pyramides</div>
+        <div class="sub cond">bâties par des <span class="pop">ouvriers payés</span>… en pain et en bière 🍺 — pas par des esclaves !</div>
+      </div>
+
+      <div class="scene" id="s3">
+        <div class="eyebrow cond">Secret n°3</div>
+        <div class="headline cond">Ils avaient déjà</div>
+        <div class="sub cond">le <span class="pop">dentifrice</span>, un calendrier de <span class="pop">365 jours</span> et le papier (papyrus) 📜</div>
+      </div>
+
+      <div class="scene" id="s4">
+        <div class="eyebrow cond">Secret n°2</div>
+        <div class="headline cond">Ramsès II</div>
+        <div class="sub cond"><span class="pop">90 ans</span> de règne de vie, plus de <span class="pop">100 enfants</span> 👑 une vraie légende</div>
+      </div>
+
+      <div class="scene" id="s5">
+        <div class="eyebrow cond">Secret n°1</div>
+        <div class="headline cond">Les chats étaient sacrés 🐱</div>
+        <div class="sub cond">en tuer un était puni de <span class="pop">peine de mort</span> !</div>
+      </div>
+
+      <div class="scene" id="s6">
+        <div class="headline big cond">Abonne-toi 🔥</div>
+        <div class="sub cond">un nouveau pays à découvrir chaque jour</div>
+      </div>
+    </div>
+
+    <!-- PHARAON -->
+    <svg class="pharaoh" viewBox="0 0 300 520" aria-hidden="true">
+      <!-- ombre au sol -->
+      <ellipse cx="150" cy="508" rx="78" ry="13" fill="rgba(90,60,10,.18)"/>
+
+      <g id="char" stroke="#2b2016" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+
+        <!-- ===== NEMES (coiffe) arrière + lappets ===== -->
+        <!-- couronne / haut -->
+        <path d="M104 128 Q150 54 196 128 Z" fill="#e8b53a"/>
+        <!-- lappet gauche -->
+        <path d="M112 118 L88 262 L128 262 L130 150 Z" fill="#e8b53a"/>
+        <!-- lappet droit -->
+        <path d="M188 118 L212 262 L172 262 L170 150 Z" fill="#e8b53a"/>
+        <!-- rayures bleues -->
+        <g stroke="#2b5fa5" stroke-width="3">
+          <line x1="116" y1="150" x2="126" y2="150"/><line x1="112" y1="180" x2="125" y2="180"/>
+          <line x1="107" y1="210" x2="123" y2="210"/><line x1="102" y1="240" x2="122" y2="240"/>
+          <line x1="184" y1="150" x2="174" y2="150"/><line x1="188" y1="180" x2="175" y2="180"/>
+          <line x1="193" y1="210" x2="177" y2="210"/><line x1="198" y1="240" x2="178" y2="240"/>
+          <line x1="120" y1="96" x2="180" y2="96"/>
+        </g>
+        <!-- bandeau frontal -->
+        <path d="M108 120 Q150 100 192 120 L188 134 Q150 116 112 134 Z" fill="#2b5fa5"/>
+
+        <!-- ===== VISAGE ===== -->
+        <path d="M116 122 Q150 112 184 122 L182 190 Q150 214 118 190 Z" fill="#d9a86b"/>
+
+        <!-- uraeus (cobra) -->
+        <path d="M150 116 q-8 -10 0 -18 q8 6 0 14" fill="#3aa06a" stroke-width="3"/>
+        <circle cx="150" cy="99" r="3.4" fill="#c0492f" stroke-width="2.5"/>
+
+        <!-- yeux -->
+        <g id="eyes">
+          <g stroke-width="0" fill="#2b2016">
+            <ellipse cx="133" cy="150" rx="5.5" ry="6.5"/>
+            <ellipse cx="167" cy="150" rx="5.5" ry="6.5"/>
+          </g>
+          <!-- trait de khôl -->
+          <path d="M138 150 q9 -1 15 4" fill="none" stroke-width="3"/>
+          <path d="M162 150 q-9 -1 -15 4" fill="none" stroke-width="3"/>
+        </g>
+        <!-- sourcils -->
+        <path d="M124 140 q9 -5 18 -1" fill="none" stroke-width="3.5"/>
+        <path d="M176 140 q-9 -5 -18 -1" fill="none" stroke-width="3.5"/>
+        <!-- nez -->
+        <path d="M150 156 q-4 10 -1 16 q3 2 6 0" fill="none" stroke-width="3"/>
+        <!-- bouche -->
+        <path id="mouth" d="M136 184 q14 10 28 0 q-14 -3 -28 0 Z" fill="#8a3b2c" stroke-width="3"/>
+
+        <!-- barbe postiche -->
+        <g>
+          <path d="M141 208 L138 262 Q150 274 162 262 L159 208 Q150 214 141 208 Z" fill="#2b5fa5"/>
+          <g stroke="#1c3f73" stroke-width="2.5">
+            <line x1="140" y1="222" x2="160" y2="222"/><line x1="139" y1="236" x2="161" y2="236"/>
+            <line x1="139" y1="250" x2="161" y2="250"/>
+          </g>
+        </g>
+
+        <!-- ===== CORPS ===== -->
+        <!-- cou -->
+        <rect x="138" y="196" width="24" height="20" fill="#d9a86b"/>
+        <!-- torse -->
+        <path d="M120 262 Q150 250 180 262 L176 356 L124 356 Z" fill="#d9a86b"/>
+
+        <!-- jambes -->
+        <path d="M132 352 L128 430 L146 430 L148 352 Z" fill="#d9a86b"/>
+        <path d="M152 352 L154 430 L172 430 L168 352 Z" fill="#d9a86b"/>
+        <!-- pieds -->
+        <path d="M124 430 q-6 8 6 10 l16 0 0 -10 Z" fill="#c99a5c"/>
+        <path d="M176 430 q6 8 -6 10 l-16 0 0 -10 Z" fill="#c99a5c"/>
+
+        <!-- pagne (shendyt) -->
+        <path d="M116 330 L184 330 L192 372 L108 372 Z" fill="#f3ead0"/>
+        <g stroke="#c9bd94" stroke-width="2.5">
+          <line x1="130" y1="332" x2="126" y2="370"/><line x1="145" y1="332" x2="144" y2="371"/>
+          <line x1="160" y1="332" x2="162" y2="370"/><line x1="174" y1="332" x2="178" y2="370"/>
+        </g>
+        <!-- ceinture -->
+        <rect x="112" y="326" width="76" height="12" fill="#e8b53a"/>
+        <!-- tablier central -->
+        <path d="M143 338 L157 338 L153 380 L147 380 Z" fill="#e8b53a"/>
+
+        <!-- collier ousekh -->
+        <path d="M112 264 Q150 300 188 264 Q150 288 112 264 Z" fill="#e8b53a"/>
+        <path d="M118 270 Q150 300 182 270" fill="none" stroke="#2aa198" stroke-width="5"/>
+        <path d="M124 276 Q150 300 176 276" fill="none" stroke="#c0492f" stroke-width="4"/>
+
+        <!-- bras gauche (tient un ankh) -->
+        <path d="M124 268 Q104 300 100 340" fill="none" stroke-width="9"/>
+        <g stroke-width="3.5">
+          <circle cx="97" cy="352" r="7" fill="none"/>
+          <line x1="97" y1="359" x2="97" y2="378"/>
+          <line x1="88" y1="366" x2="106" y2="366"/>
+        </g>
+
+        <!-- bras droit qui pointe vers le texte -->
+        <g id="armPoint">
+          <path d="M178 266 Q206 250 214 214" fill="none" stroke-width="9"/>
+          <circle cx="214" cy="206" r="8" fill="#d9a86b"/>
+          <line x1="214" y1="200" x2="214" y2="184" stroke-width="6"/>
+        </g>
+      </g>
+    </svg>
+
+  </div>
+</body>
+</html>
