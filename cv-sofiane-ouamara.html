@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #fff; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #1a1a1a;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+  }
+  .name {
+    text-align: center;
+    font-size: 34pt;
+    font-weight: 700;
+    letter-spacing: 12px;
+    padding: 26px 0 20px;
+    border-bottom: 2px solid #1a1a1a;
+    margin: 0 30px;
+  }
+  .container { display: flex; }
+  .left {
+    width: 34%;
+    background: #efefef;
+    padding: 26px 22px 40px;
+  }
+  .right {
+    width: 66%;
+    padding: 26px 30px 40px;
+  }
+  h2 {
+    font-size: 13pt;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+  }
+  .left h2 { margin-top: 4px; }
+  .sep {
+    border: none;
+    border-top: 1px dashed #999;
+    margin: 22px 0;
+  }
+
+  /* Contact */
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 10pt;
+    line-height: 1.35;
+  }
+  .contact-item .ico {
+    flex: 0 0 18px;
+    font-size: 12pt;
+    text-align: center;
+    color: #1a1a1a;
+  }
+
+  /* Profil */
+  .profil { font-size: 10pt; line-height: 1.55; text-align: justify; }
+
+  /* Left lists */
+  ul.simple { list-style: none; }
+  ul.simple li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 7px;
+    font-size: 10pt;
+    line-height: 1.3;
+  }
+  ul.simple li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 6px;
+    width: 5px; height: 5px;
+    background: #1a1a1a;
+    border-radius: 50%;
+  }
+
+  /* Langues */
+  .langue { font-size: 10pt; margin-bottom: 8px; }
+  .langue b { font-weight: 700; }
+
+  /* Right - experiences */
+  .exp { margin-bottom: 20px; }
+  .exp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .exp-title { font-size: 11pt; font-weight: 700; }
+  .exp-title .country { font-weight: 400; }
+  .exp-date { font-size: 10pt; white-space: nowrap; }
+  .exp-role { font-style: italic; font-size: 10pt; margin: 3px 0 8px; }
+  ul.dash { list-style: none; }
+  ul.dash li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 5px;
+    font-size: 10pt;
+    line-height: 1.3;
+  }
+  ul.dash li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 6px;
+    width: 5px; height: 5px;
+    background: #1a1a1a;
+    border-radius: 50%;
+  }
+  .exp + .exp { border-top: 1px solid #ddd; padding-top: 16px; }
+  .footer {
+    text-align: center;
+    font-size: 9pt;
+    letter-spacing: 3px;
+    color: #333;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+  <div class="name">SOFIANE&nbsp;&nbsp;OUAMARA</div>
+  <div class="container">
+    <aside class="left">
+      <h2>CONTACT</h2>
+      <div class="contact-item"><span class="ico">&#9742;</span><span>07&nbsp;69&nbsp;62&nbsp;67&nbsp;17</span></div>
+      <div class="contact-item"><span class="ico">&#9993;</span><span>ouamarasofiane0@gmail.com</span></div>
+      <div class="contact-item"><span class="ico">&#9679;</span><span>11 rue Jean Zay,<br>Somain (59490)</span></div>
+      <div class="contact-item"><span class="ico">&#128663;</span><span>Permis B</span></div>
+      <div class="contact-item"><span class="ico">&#127760;</span><span>Mobile sur toute la Suisse</span></div>
+
+      <hr class="sep">
+
+      <h2>PROFIL</h2>
+      <p class="profil">Professionnel du bâtiment et de l'industrie avec plus de 3 ans d'expérience en Australie et en Nouvelle-Zélande. Habitué aux environnements exigeants, aux travaux manuels et au respect strict des règles de sécurité. Polyvalent, autonome et rigoureux, je possède une solide expérience en construction, maintenance industrielle et pose de revêtements de sol. Disponible immédiatement pour une opportunité en Suisse.</p>
+
+      <hr class="sep">
+
+      <h2>FORMATIONS /<br>CERTIFICATIONS</h2>
+      <ul class="simple">
+        <li>White Card Construction</li>
+        <li>Working at Heights</li>
+        <li>Confined Space</li>
+        <li>Gas Testing</li>
+        <li>First Aid</li>
+        <li>Basic Fire</li>
+        <li>Permis de conduire</li>
+        <li>BTS Technico-Commercial (2020)</li>
+      </ul>
+
+      <hr class="sep">
+
+      <h2>COMPÉTENCES</h2>
+      <ul class="simple">
+        <li>Construction</li>
+        <li>Pose de parquet</li>
+        <li>Maintenance industrielle</li>
+        <li>Lecture de plans</li>
+        <li>Utilisation d'outillage électroportatif</li>
+        <li>Travail en équipe</li>
+        <li>Respect des normes de sécurité</li>
+        <li>Polyvalence</li>
+        <li>Apprentissage rapide</li>
+      </ul>
+
+      <hr class="sep">
+
+      <h2>LANGUES</h2>
+      <div class="langue"><b>Français</b> : Langue maternelle</div>
+      <div class="langue"><b>Anglais</b> : Courant</div>
+    </aside>
+
+    <main class="right">
+      <h2>EXPÉRIENCES PROFESSIONNELLES</h2>
+
+      <div class="exp">
+        <div class="exp-head">
+          <div class="exp-title">BESPOKE FLOOR – QUEENSTOWN / WANAKA <span class="country">(NOUVELLE-ZÉLANDE)</span></div>
+          <div class="exp-date">09/2025 – 06/2026</div>
+        </div>
+        <div class="exp-role">Poseur et rénovateur de parquets</div>
+        <ul class="dash">
+          <li>Ponçage et rénovation de parquets en bois massif</li>
+          <li>Application de vernis et finitions de protection</li>
+          <li>Pose de parquets massifs</li>
+          <li>Installation de parquets contrecollés (Engineered Flooring)</li>
+          <li>Pose de sols stratifiés (Laminate Flooring)</li>
+          <li>Réparation et entretien de revêtements de sol</li>
+          <li>Contrôle qualité des finitions</li>
+        </ul>
+      </div>
+
+      <div class="exp">
+        <div class="exp-head">
+          <div class="exp-title">CLEANAWAY – KCGM KALGOORLIE <span class="country">(AUSTRALIE)</span></div>
+          <div class="exp-date">07/2025</div>
+        </div>
+        <div class="exp-role">Opérateur industriel</div>
+        <ul class="dash">
+          <li>Nettoyage industriel haute pression</li>
+          <li>Travaux en espaces confinés</li>
+          <li>Nettoyage de zones minières</li>
+          <li>Surveillance sécurité (Sentry)</li>
+          <li>Gestion des déchets industriels</li>
+        </ul>
+      </div>
+
+      <div class="exp">
+        <div class="exp-head">
+          <div class="exp-title">PRG – WILUNA C4 <span class="country">(AUSTRALIE)</span></div>
+          <div class="exp-date">01/2024 – 06/2025</div>
+        </div>
+        <div class="exp-role">Trade Assistant</div>
+        <ul class="dash">
+          <li>Nettoyage industriel haute pression</li>
+          <li>Travaux en espaces confinés</li>
+          <li>Nettoyage d'équipements miniers</li>
+          <li>Surveillance incendie</li>
+          <li>Assistance aux chaudronniers</li>
+        </ul>
+      </div>
+
+      <div class="exp">
+        <div class="exp-head">
+          <div class="exp-title">QUICKWAY – SYDNEY METRO <span class="country">(AUSTRALIE)</span></div>
+          <div class="exp-date">12/2023</div>
+        </div>
+        <div class="exp-role">Trade Assistant</div>
+        <ul class="dash">
+          <li>Installation d'éléments préfabriqués</li>
+          <li>Tirage de câbles</li>
+          <li>Utilisation d'outillage manuel et électroportatif</li>
+          <li>Assistance aux différents corps de métier</li>
+        </ul>
+      </div>
+
+      <div class="exp">
+        <div class="exp-head">
+          <div class="exp-title">CONSTRUCTION / LABOURER – MELBOURNE <span class="country">(AUSTRALIE)</span></div>
+          <div class="exp-date">10/2023</div>
+        </div>
+        <div class="exp-role">Ouvrier du bâtiment</div>
+        <ul class="dash">
+          <li>Travaux de construction et rénovation</li>
+          <li>Montage et démontage d'échafaudages</li>
+          <li>Utilisation d'outils électriques et manuels</li>
+          <li>Respect des procédures de sécurité</li>
+        </ul>
+      </div>
+
+      <div class="exp">
+        <div class="exp-head">
+          <div class="exp-title">MECHANICAL FITTER – AUSTRALIE</div>
+          <div class="exp-date">10/2022 – 09/2023</div>
+        </div>
+        <div class="exp-role">Trade Assistant</div>
+        <ul class="dash">
+          <li>Assistance aux mécaniciens industriels</li>
+          <li>Utilisation d'outillage spécialisé</li>
+          <li>Maintenance et travaux de chantier</li>
+          <li>Respect des normes HSE</li>
+        </ul>
+      </div>
+
+      <div class="footer">RÉFÉRENCES DISPONIBLES SUR DEMANDE</div>
+    </main>
+  </div>
+</body>
+</html>
